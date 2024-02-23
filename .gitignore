@@ -160,3 +160,4 @@ cython_debug/
 #.idea/
 
 examples/Unit_Cell_Catalog.txt
+examples/small_cat.lat

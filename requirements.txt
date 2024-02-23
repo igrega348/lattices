@@ -4,3 +4,4 @@ plotly>5.18
 networkx>=3.2
 scipy>=1.11
 pandas>=2.1
+tqdm>=4.66
