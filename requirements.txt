@@ -1,0 +1,5 @@
+numpy>=1.26
+matplotlib>=3.8
+plotly>5.18
+networkx>=3.2
+scipy>=1.11

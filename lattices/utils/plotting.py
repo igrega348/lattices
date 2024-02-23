@@ -8,7 +8,6 @@ import numpy.typing as npt
 from scipy.interpolate import griddata
 from matplotlib import cm
 import os
-from torch.utils.data import ConcatDataset
 import plotly.express as px
 import plotly.graph_objects as go
 from math import floor
@@ -32,10 +31,7 @@ def parity_plot(true, pred, fn: str):
 
 def surface_plot(true, pred, dataset, nplot: int, fn: str):
     fig = plt.figure(figsize=(6,3*nplot))
-    if isinstance(dataset, ConcatDataset):
-        names = np.array([data.name for dset in dataset.datasets for data in dset])
-    else:
-        names = np.array(dataset.data.name)
+    names = np.array(dataset.data.name)
     uq_names = np.unique(names)
     nplot = min(nplot, len(uq_names))
     plot_uq_names = np.random.choice(uq_names, nplot, replace=False)
