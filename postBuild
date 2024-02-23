@@ -1,1 +1,1 @@
-wget -q -O Unit_Cell_Catalog.txt https://www.research-collection.ethz.ch/bitstream/handle/20.500.11850/457598/Unit_Cell_Catalog.txt
+echo "Running postBuild"
