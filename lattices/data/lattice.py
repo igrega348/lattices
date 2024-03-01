@@ -190,8 +190,8 @@ class Lattice:
                 # normalize
                 edge_vecs_0 = edge_vecs_0/np.linalg.norm(edge_vecs_0, axis=1, keepdims=True)
                 edge_vecs_1 = edge_vecs_1/np.linalg.norm(edge_vecs_1, axis=1, keepdims=True)
-                edge_vecs_0 = np.unique(np.around(edge_vecs_0, 3), axis=0)
-                edge_vecs_1 = np.unique(np.around(edge_vecs_1, 3), axis=0)
+                edge_vecs_0 = np.unique(np.around(edge_vecs_0, 2), axis=0)
+                edge_vecs_1 = np.unique(np.around(edge_vecs_1, 2), axis=0)
                 assert edge_vecs_0.shape[0]==edge_vecs_1.shape[0]
                 assert np.allclose(edge_vecs_0, edge_vecs_1)
                 self.fundamental_edge_adjacency = fundamental_edge_adjacency
