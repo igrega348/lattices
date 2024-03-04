@@ -284,6 +284,7 @@ def plotly_unit_cell_3d(
         x=x, y=y, z=z,
         line={'width':7,'color':colors},
         mode='lines',
+        name='edges',
         hoverinfo='none',
         connectgaps=False,
         showlegend=False,   
