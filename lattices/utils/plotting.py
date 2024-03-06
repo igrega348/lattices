@@ -11,7 +11,7 @@ import os
 import plotly.express as px
 import plotly.graph_objects as go
 from math import floor
-from typing import Optional, Iterable, Tuple
+from typing import Optional, Iterable, Tuple, Callable
 
 
 def parity_plot(true, pred, fn: str):
@@ -372,57 +372,14 @@ def plotly_elasticity_surf(
     fig=None, subplot: Optional[dict] = None,
     clim: Optional[Tuple[float, float]] = None,
     ):
-    assert S.shape==(3,3,3,3)
-        
-    u, v = np.mgrid[0:2*np.pi:100j, 0:np.pi:100j]
-
-
-    X = np.sin(v)*np.cos(u)
-    Y = np.sin(v)*np.sin(u)
-    Z = np.cos(v)
-
-    x = X.flatten()
-    y = Y.flatten()
-    z = Z.flatten()
-    pos = np.column_stack((x,y,z))
-
-    e = 1/np.einsum('ai,aj,ak,al,ijkl->a',pos,pos,pos,pos,S)
-
-    rows, cols = X.shape
-    indices = np.unravel_index(np.arange(len(e)), (rows, cols))
-    E = np.zeros_like(X)
-    E[indices] = e
-
-    R = E
-
-    X = R*np.sin(v)*np.cos(u)
-    Y = R*np.sin(v)*np.sin(u)
-    Z = R*np.cos(v)
-
-    if not isinstance(fig, go.Figure):
-        fig = go.Figure()
-    if isinstance(subplot, dict):
-        subplot_args = dict(
-                row=floor(subplot['index']/subplot['ncols']) + 1,
-                col=subplot['index']%subplot['ncols'] + 1
-        )
-    else:
-        subplot_args = {}
-
-    clim = clim or (np.min(R), np.max(R))
-    fig.add_trace(
-        go.Surface(x=X, y=Y, z=Z, surfacecolor=R, cmin=clim[0], cmax=clim[1]),
-        **subplot_args
+    return plotly_tensor_projection(
+        S, point_func=lambda x: 1/x, 
+        title=title, fig=fig, subplot=subplot, clim=clim
     )
 
-    if isinstance(subplot, dict):
-        fig.layout.annotations[subplot['index']].update(text=title)
-    else:
-        fig.update_layout(title=title)
-    return fig
-
-def plotly_stiffness_surf(
+def plotly_tensor_projection(
     C: np.ndarray, 
+    point_func: Optional[Callable] = None,
     title: str='',
     fig=None, subplot: Optional[dict] = None,
     clim: Optional[Tuple[float, float]] = None,
@@ -443,6 +400,8 @@ def plotly_stiffness_surf(
     pos = np.column_stack((x,y,z))
 
     e = np.einsum('ai,aj,ak,al,ijkl->a',pos,pos,pos,pos,C)
+    if point_func is not None:
+        e = point_func(e)
 
     rows, cols = X.shape
     indices = np.unravel_index(np.arange(len(e)), (rows, cols))
