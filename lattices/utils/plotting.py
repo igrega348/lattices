@@ -381,11 +381,25 @@ def plotly_tensor_projection(
     C: np.ndarray, 
     point_func: Optional[Callable] = None,
     title: str='',
-    fig=None, subplot: Optional[dict] = None,
+    fig: Optional[go.Figure] = None, subplot: Optional[dict] = None,
     clim: Optional[Tuple[float, float]] = None,
-    resolution: int = 100j,
+    resolution: complex = 100j,
     ) -> go.Figure:
-    assert C.shape==(3,3,3,3)
+    """Plot a projection of 4-th order tensor using plotly
+
+    Args:
+        C (np.ndarray): 4-th order tensor of shape (3,3,3,3) or (1,3,3,3,3)
+        point_func (Optional[Callable]): function to apply point-wise to projections.
+        title (str, optional): plot title
+        fig (Optional[go.Figure]): existing figure. If None, a new figure is created.
+        subplot (Optional[dict]): dictionary with keys ['index','ncol'] to pick the subplot
+        clim (Optional[Tuple[float, float]]): limits of color scale
+        resolution (complex, optional): resolution of grid on the sphere given as complex number. Defaults to 100j.
+
+    Returns:
+        go.Figure: Resulting plotly figure
+    """
+    assert C.shape==(3,3,3,3) or C.shape==(1,3,3,3,3)
         
     u, v = np.mgrid[0:2*np.pi:resolution, 0:np.pi:resolution]
 
