@@ -1,5 +1,6 @@
 # %%
 import warnings
+from math import sqrt
 import numpy as np
 from typing import Union
 try:
@@ -7,7 +8,10 @@ try:
     Tensor = torch.Tensor
 except ImportError:
     Tensor = np.ndarray
-# %% Enforce various symmetries on compliance tensors
+
+##########################
+# Crystal symmetries
+##########################
 def enforce_trigonal(S0 : np.ndarray) -> np.ndarray:
     S = S0.copy()
     S[1,1]=S[0,0]
@@ -53,7 +57,7 @@ def enforce_orthotropic(S0 : np.ndarray) -> np.ndarray:
     S[3,4:6]=S[4:6,3]=0
     S[4,5]=S[5,4]=0
     return S
-# %% Return compliance tensors for various symmetries
+# Compliance tensors in Voigt notation for different crystal symmetries
 def orthotropic_S(Ex, Ey, Ez, Gyz, Gxz, Gxy, nuxy, nuyz, nuxz) -> np.ndarray:
     nuzy = nuyz * Ez/Ey
     nuzx = nuxz * Ez/Ex
@@ -138,9 +142,12 @@ def isotropic_S(E=1, nu=0.3) -> np.ndarray:
                 [0,0,0,0,1/G,0],
                 [0,0,0,0,0,1/G]])
     return S
-# %% Rotation functions
-def rotate_4th_order(T : np.ndarray, g : np.ndarray):
-    out = np.einsum('ia, jb, kc, ld, abcd->ijkl', g,g,g,g,T)
+
+############################
+# Rotation functions
+############################
+def rotate_4th_order(T : np.ndarray, Q : np.ndarray):
+    out = np.einsum('ia, jb, kc, ld, abcd->ijkl', Q,Q,Q,Q,T)
     return out
 def rotate_Voigt_stiffness(C : np.ndarray, R : np.ndarray):
     K1 = R**2
@@ -166,7 +173,137 @@ def rotate_Voigt_compliance(S : np.ndarray, R : np.ndarray):
         [2*K3, K4]
     ])
     return K_T @ S @ np.linalg.inv(K)
+
+def Voigt_rot_matrix_stress_inplace(Q: Union[np.ndarray, Tensor], R: Union[np.ndarray, Tensor]) -> None:
+    assert Q.shape[-1] == 3 and Q.shape[-2] == 3
+    assert R.shape[-1] == 6 and R.shape[-2] == 6
+    A11 = Q**2
+    inds0 = [1,0,0]
+    inds1 = [2,2,1]
+    A12 = 2 * Q[...,inds0] * Q[...,inds1]
+    A21 = Q[...,inds0,:] * Q[...,inds1,:]
+    B1 = Q[...,inds0,:]
+    B2 = Q[...,inds1,:]
+    A22 = B1[...,inds1] * B2[...,inds0] + B1[...,inds0] * B2[...,inds1]
+    R[...,0:3,0:3] = A11
+    R[...,0:3,3:6] = A12
+    R[...,3:6,0:3] = A21
+    R[...,3:6,3:6] = A22
+
+def Voigt_rot_matrix_stress_numpy(Q: np.ndarray) -> np.ndarray:
+    if Q.ndim == 2:
+        R = np.zeros((6,6))
+    elif Q.ndim == 3:
+        R = np.zeros((Q.shape[0], 6,6))
+    Voigt_rot_matrix_stress_inplace(Q, R)
+    return R
+
+def Voigt_rot_matrix_strain_inplace(Q: Union[np.ndarray, Tensor], R: Union[np.ndarray, Tensor]) -> None:
+    assert Q.shape[-1] == 3 and Q.shape[-2] == 3
+    assert R.shape[-1] == 6 and R.shape[-2] == 6
+    A11 = Q**2
+    inds0 = [1,0,0]
+    inds1 = [2,2,1]
+    A12 = Q[...,inds0] * Q[...,inds1]
+    A21 = 2*Q[...,inds0,:] * Q[...,inds1,:]
+    B1 = Q[...,inds0,:]
+    B2 = Q[...,inds1,:]
+    A22 = B1[...,inds1] * B2[...,inds0] + B1[...,inds0] * B2[...,inds1]
+    R[...,0:3,0:3] = A11
+    R[...,0:3,3:6] = A12
+    R[...,3:6,0:3] = A21
+    R[...,3:6,3:6] = A22
+
+def Voigt_rot_matrix_strain_numpy(Q: np.ndarray) -> np.ndarray:
+    if Q.ndim == 2:
+        R = np.zeros((6,6))
+    elif Q.ndim == 3:
+        R = np.zeros((Q.shape[0], 6,6))
+    Voigt_rot_matrix_strain_inplace(Q, R)
+    return R
+
+def Mandel_rot_matrix_inplace(Q: Union[np.ndarray, Tensor], R: Union[np.ndarray, Tensor]) -> None:
+    assert Q.shape[-1] == 3 and Q.shape[-2] == 3
+    assert R.shape[-1] == 6 and R.shape[-2] == 6
+    A11 = Q**2
+    A12 = sqrt(2) * Q[...,[1,0,0]] * Q[...,[2,2,1]]
+    B1 = Q[...,[1,0,0],:]
+    B2 = Q[...,[2,2,1],:]
+    A21 = sqrt(2) * B1 * B2
+    A22 = B1[...,[1,0,0]] * B2[...,[2,2,1]] + B1[...,[2,2,1]] * B2[...,[1,0,0]]
+    R[...,0:3,0:3] = A11
+    R[...,0:3,3:6] = A12
+    R[...,3:6,0:3] = A21
+    R[...,3:6,3:6] = A22
+
+def Mandel_rot_matrix_numpy(Q: np.ndarray) -> np.ndarray:
+    if Q.ndim == 2:
+        R = np.zeros((6,6))
+    elif Q.ndim == 3:
+        R = np.zeros((Q.shape[0], 6,6))
+    Mandel_rot_matrix_inplace(Q, R)
+    return R
+
+
 # %%
+def tens_2d_to_Mandel_inplace(s: Union[np.ndarray, Tensor], x: Union[np.ndarray, Tensor]) -> None:
+    assert s.shape[-1] == 3 and s.shape[-2] == 3
+    assert x.shape[-1] == 6
+    x[...,0] = s[...,0,0]
+    x[...,1] = s[...,1,1]
+    x[...,2] = s[...,2,2]
+    s2 = sqrt(2)
+    x[...,3] = s2 * s[...,1,2]
+    x[...,4] = s2 * s[...,0,2]
+    x[...,5] = s2 * s[...,0,1]
+
+def tens_2d_to_Mandel_numpy(s: np.ndarray) -> np.ndarray:
+    assert np.allclose(s, s.swapaxes(-1,-2)), "s is not symmetric"
+    if s.ndim == 2:
+        x = np.zeros((6))
+    elif s.ndim == 3:
+        x = np.zeros((s.shape[0], 6))
+    tens_2d_to_Mandel_inplace(s, x)
+    return x
+
+def stress_to_Voigt_inplace(s: Union[np.ndarray, Tensor], x: Union[np.ndarray, Tensor]) -> None:
+    assert s.shape[-1] == 3 and s.shape[-2] == 3
+    assert x.shape[-1] == 6
+    x[...,0] = s[...,0,0]
+    x[...,1] = s[...,1,1]
+    x[...,2] = s[...,2,2]
+    x[...,3] = s[...,1,2]
+    x[...,4] = s[...,0,2]
+    x[...,5] = s[...,0,1]
+
+def stress_to_Voigt_numpy(s: np.ndarray) -> np.ndarray:
+    assert np.allclose(s, s.swapaxes(-1,-2)), "s is not symmetric"
+    if s.ndim == 2:
+        x = np.zeros((6))
+    elif s.ndim == 3:
+        x = np.zeros((s.shape[0], 6))
+    stress_to_Voigt_inplace(s, x)
+    return x
+
+def strain_to_Voigt_inplace(e: Union[np.ndarray, Tensor], x: Union[np.ndarray, Tensor]) -> None:
+    assert e.shape[-1] == 3 and e.shape[-2] == 3
+    assert x.shape[-1] == 6
+    x[...,0] = e[...,0,0]
+    x[...,1] = e[...,1,1]
+    x[...,2] = e[...,2,2]
+    x[...,3] = 2 * e[...,1,2]
+    x[...,4] = 2 * e[...,0,2]
+    x[...,5] = 2 * e[...,0,1]
+
+def strain_to_Voigt_numpy(e: np.ndarray) -> np.ndarray:
+    assert np.allclose(e, e.swapaxes(-1,-2)), "e is not symmetric"
+    if e.ndim == 2:
+        x = np.zeros((6))
+    elif e.ndim == 3:
+        x = np.zeros((e.shape[0], 6))
+    strain_to_Voigt_inplace(e, x)
+    return x
+
 def compliance_Voigt_to_4th_order( S : np.ndarray ):
     if S.ndim==2:
         _S = S.reshape((1,6,6))
@@ -506,6 +643,22 @@ try:
         if C.ndim==2:
             C4.squeeze_(0)
         return C4
+    
+    def Mandel_rot_matrix_torch(Q: torch.Tensor) -> torch.Tensor:
+        if Q.ndim == 2:
+            R = torch.zeros((6,6), device=Q.device, dtype=Q.dtype)
+        elif Q.ndim == 3:
+            R = torch.zeros((Q.shape[0], 6,6), device=Q.device, dtype=Q.dtype)
+        Mandel_rot_matrix_inplace(Q, R)
+        return R
+    
+    def tens_2d_to_Mandel_torch(s: torch.Tensor) -> torch.Tensor:
+        if s.ndim == 2:
+            x = torch.zeros((6), device=s.device, dtype=s.dtype)
+        elif s.ndim == 3:
+            x = torch.zeros((s.shape[0], 6), device=s.device, dtype=s.dtype)
+        tens_2d_to_Mandel_inplace(s, x)
+        return x
     
 except ImportError:
     warnings.warn('torch not imported. Some functions will not be available.')

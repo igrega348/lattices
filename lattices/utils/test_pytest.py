@@ -1,6 +1,8 @@
 import json
 import numpy as np
 
+from e3nn import o3
+
 from . import abaqus
 from . import elasticity_func
 
@@ -35,8 +37,31 @@ def test_Mandel_Voigt():
     assert np.allclose(S, elasticity_func.numpy_cart_4_to_Mandel(S4_m))
 
 def test_rotation_rules():
-    # TODO
-    pass
+    # Rotations for stress and strain
+    sig = np.random.rand(3,3)
+    sig = sig + sig.T # symmetric
+    Q = o3.rand_matrix().numpy()
+    sig_rot = np.einsum('ia,jb,ab->ij', Q, Q, sig)
+    sig_Mandel = elasticity_func.tens_2d_to_Mandel_numpy(sig)
+    R_mand = elasticity_func.Mandel_rot_matrix_numpy(Q)
+    sig_rot_Mandel = R_mand @ sig_Mandel
+    assert np.allclose(elasticity_func.tens_2d_to_Mandel_numpy(sig_rot), sig_rot_Mandel)
+
+    # Rotations for stiffness and compliance
+    # Come up with PSD stiffness matrix in Mandel notation
+    C = np.random.rand(6,6)
+    C = C + C.T # symmetric
+    C = C @ C # PSD
+    assert np.all(np.linalg.eigvalsh(C) > 0)
+    C4 = elasticity_func.numpy_Mandel_to_cart_4(C)
+    Q = o3.rand_matrix().numpy()
+    # check that rotating the stiffness matrix in Mandel notation 
+    # gives the same result as rotating the 4th order tensor
+    R_mand = elasticity_func.Mandel_rot_matrix_numpy(Q)
+    C_rot_Mand = np.einsum('ia,jb,ab->ij', R_mand, R_mand, C)
+    C4_rot = elasticity_func.rotate_4th_order(C4, Q)
+    assert np.allclose(C_rot_Mand, elasticity_func.numpy_cart_4_to_Mandel(C4_rot))
+
 
 def test_abaqus_parsing():
     json_text = """
