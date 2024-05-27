@@ -10,6 +10,18 @@ except ImportError:
         return range(*args, **kwargs)
 import re
 
+class CfgDict(dict):
+    """dot.notation access to dictionary attributes"""
+    # based on https://stackoverflow.com/questions/2352181/how-to-use-a-dot-to-access-members-of-dictionary
+    # but allowing for implicit nesting
+    __setattr__ = dict.__setitem__
+    __delattr__ = dict.__delitem__
+    def __getattr__(self, key):
+        val = self.get(key)
+        if isinstance(val, dict):
+            return CfgDict(val)
+        return val
+    
 class Catalogue:
     """Unit cell catalogue object.
 
@@ -349,7 +361,7 @@ class Catalogue:
         """
         lines = self.lines[name]
 
-        uc_dict = {}
+        uc_dict = CfgDict({})
         assert name in lines[0]
         uc_dict['name'] = name
         

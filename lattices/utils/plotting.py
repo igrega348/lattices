@@ -445,7 +445,10 @@ def plotly_tensor_projection(
     )
 
     if isinstance(subplot, dict):
-        fig.layout.annotations[subplot['index']].update(text=title)
+        if len(fig.layout.annotations)>0:
+            fig.layout.annotations[subplot['index']].update(text=title)
+        else:
+            print(f'Could not update subplot {subplot["index"]} with title {title}')
     else:
         fig.update_layout(title=title)
     return fig
