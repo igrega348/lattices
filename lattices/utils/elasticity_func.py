@@ -495,7 +495,8 @@ def numpy_cart_4_to_Mandel(_C: np.ndarray) -> np.ndarray:
         C = _C[None,...] # add batch dimension
     else:
         C = _C
-    C_2 = np.zeros((C.shape[0],6,6))
+    C2_shape = C.shape[:-2] + (6,6)
+    C_2 = np.zeros(C2_shape)
     _cart_4_tensor_to_Mandel_inplace(C, C_2, mask)
     if _C.ndim == 4:
         C_2 = C_2[0, ...] # remove batch dimension
@@ -503,11 +504,14 @@ def numpy_cart_4_to_Mandel(_C: np.ndarray) -> np.ndarray:
 
 def numpy_Mandel_to_cart_4(C: np.ndarray) -> np.ndarray:
     # convert C_ij to C_abcd
-    if C.ndim==3:
+    if C.ndim>2:
+        assert C.shape[-1]==6 and C.shape[-2]==6
+        C4_shape = C.shape[:-2] + (3,3,3,3)
         _C = C
     elif C.ndim==2:
+        C4_shape = (1,3,3,3,3)
         _C = C[None,...] # add batch dimension
-    C4 = np.zeros((_C.shape[0], 3,3,3,3))
+    C4 = np.zeros(C4_shape)
     _Mandel_to_cart_4_inplace(_C, C4)
 
     if C.ndim==2:
