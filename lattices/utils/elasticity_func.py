@@ -243,8 +243,6 @@ def Mandel_rot_matrix_numpy(Q: np.ndarray) -> np.ndarray:
         R = np.zeros((Q.shape[0], 6,6))
     Mandel_rot_matrix_inplace(Q, R)
     return R
-
-
 # %%
 def tens_2d_to_Mandel_inplace(s: Union[np.ndarray, Tensor], x: Union[np.ndarray, Tensor]) -> None:
     assert s.shape[-1] == 3 and s.shape[-2] == 3
