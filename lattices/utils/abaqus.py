@@ -488,26 +488,6 @@ def write_abaqus_inp_nopbc(
     boundary_conditions: Optional[Dict[str, Iterable]] = None,
     ):
     """Write abaqus input script for a specific lattice and loading 
-
-    Parameters:
-            lat: Lattice
-            loading: list of 3-element tuples where first element is reference point number 
-                    second is degree of freedom to which displacement is applied
-                    and third is the magnitude of displacement
-            fname : name of input script file or stream to write to
-            metadata: dictionary that will be written in header
-
-    Args:
-        lat (Lattice): Lattice object
-        loading (List[Tuple]): list of 3-element tuples where first element \
-            is reference point number, second is degree of freedom \
-            to which displacement is applied \
-            and third is the magnitude of displacement
-        metadata (Dict[str, str]): Extra information to put in the *Header section
-        fname (Optional[str], optional): if `fname` is provided, output \
-            is written to file `fname`. Otherwise, return lines of text. \
-            Defaults to None.
-
     """
     # enable variable edge radius
     assert strut_radii.ndim==2
