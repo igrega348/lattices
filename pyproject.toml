@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lattices"
+version = "0.1.0"
+authors = [
+  { name="Ivan Grega", email="ig348@cam.ac.uk" },
+]
+description = "A package to interact with truss-based lattices."
+
+[tool.setuptools.packages.find]
+include = ["lattices*"]
