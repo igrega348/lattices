@@ -502,8 +502,8 @@ def write_abaqus_inp_nopbc(
     lines = []
     lines.append('*Heading')
     lines.append('** Start header')
-    for step_name in metadata:
-        lines.append(f'**{step_name}: {metadata[step_name]}')
+    for nset_name in metadata:
+        lines.append(f'**{nset_name}: {metadata[nset_name]}')
     lines.append('** End header')
     lines.append('**')
     lines.append('**')
@@ -585,14 +585,14 @@ def write_abaqus_inp_nopbc(
         if node_sets is not None:
             lines.append('**')
             lines.append('** Node Sets')
-            for step_name in node_sets:
-                lines.append(f'*Nset, nset={step_name}-INST{i_instance}, instance=INST{i_instance}-LAT')
-                if len(node_sets[step_name])<=10:
-                    lines.append(', '.join([str(x+1) for x in node_sets[step_name]]))
+            for nset_name in node_sets:
+                lines.append(f'*Nset, nset=INST{i_instance}-{nset_name}, instance=INST{i_instance}-LAT')
+                if len(node_sets[nset_name])<=10:
+                    lines.append(', '.join([str(x+1) for x in node_sets[nset_name]]))
                 else:
-                    num_chunks = int(np.ceil(len(node_sets[step_name])/10))
+                    num_chunks = int(np.ceil(len(node_sets[nset_name])/10))
                     for i_chunk in range(num_chunks):
-                        lines.append(', '.join([str(x+1) for x in node_sets[step_name][i_chunk*10:(i_chunk+1)*10]]) + ',')
+                        lines.append(', '.join([str(x+1) for x in node_sets[nset_name][i_chunk*10:(i_chunk+1)*10]]) + ',')
             lines.append('**')
 
 
@@ -607,17 +607,17 @@ def write_abaqus_inp_nopbc(
         for bc in init_bc:
             for i_instance in range(num_instances):
                 lines.append('*Boundary')
-                lines.append(f'{bc["NSET"]}-INST{i_instance}, {bc["dofs"]}')
+                lines.append(f'INST{i_instance}-{bc["NSET"]}, {bc["dofs"]}')
         lines.append('**')
         lines.append('** STEPS')
-        for step_name in boundary_conditions:
-            lines.append(f'*Step, name={step_name}, nlgeom=NO')
+        for nset_name in boundary_conditions:
+            lines.append(f'*Step, name={nset_name}, nlgeom=NO')
             lines.append('*Static')
             lines.append('1., 1., 1e-5, 1')
-            for bc in boundary_conditions[step_name]:
+            for bc in boundary_conditions[nset_name]:
                 for i_instance in range(num_instances):
                     lines.append('*Boundary')
-                    lines.append(f'{bc["NSET"]}-INST{i_instance}, {bc["dofs"]}')
+                    lines.append(f'INST{i_instance}-{bc["NSET"]}, {bc["dofs"]}')
             lines.append('*Restart, write, frequency=0')
             lines.append('*Output, field')
             lines.append('*Node Output')
