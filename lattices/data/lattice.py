@@ -11,7 +11,7 @@ try:
 except ImportError:
     warnings.warn('ImportError. scipy.spatial.transform not available')
 logging.getLogger('data.lattice').addHandler(logging.NullHandler())
-from ..utils.elasticity_func import compliance_Voigt_to_Mandel
+from lattices.utils.elasticity_func import compliance_Voigt_to_Mandel
 
 
 class Lattice:
