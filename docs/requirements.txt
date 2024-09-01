@@ -4,3 +4,4 @@ sphinx_plotly_directive
 jupyter_sphinx
 matplotlib
 networkx
+scipy
