@@ -18,3 +18,5 @@ jobs:
       uses: sphinx-notes/pages@v3
       with:
         source: docs/source  # Specify the directory containing conf.py
+      env:
+        SPHINXOPTS: "-c docs/source"  # Set the Sphinx options to use the correct path
