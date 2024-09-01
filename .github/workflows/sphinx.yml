@@ -19,4 +19,4 @@ jobs:
       with:
         source: docs/source  # Specify the directory containing conf.py
       env:
-        SPHINXOPTS: "-c docs/source"  # Set the Sphinx options to use the correct path
+        INPUT_DOCUMENTATION_PATH: docs/source  # Set the Sphinx options to use the correct path
