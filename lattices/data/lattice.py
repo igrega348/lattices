@@ -21,23 +21,23 @@ class Lattice:
     # book-keeping variables
     name: str
     # topological representations
-    reduced_node_coordinates: npt.NDArray[np.float_]
+    reduced_node_coordinates: npt.NDArray[np.float64]
     edge_adjacency: npt.NDArray[np.int_]
 
     fundamental_edge_adjacency: npt.NDArray[np.int_]
-    fundamental_tesselation_vecs: npt.NDArray[np.float_]
+    fundamental_tesselation_vecs: npt.NDArray[np.float64]
     fundamental_edge_map: npt.NDArray[np.int_]
-    fundamental_edge_radii: npt.NDArray[np.float_]
+    fundamental_edge_radii: npt.NDArray[np.float64]
 
     node_types: dict
     
     # elasticity properties
-    S_tens: npt.NDArray[np.float_]
+    S_tens: npt.NDArray[np.float64]
     compliance_tensors_M: dict # Mandel notation
     Youngs_moduli: dict
     scaling_exponents: dict
     # other properties
-    lattice_constants: npt.NDArray[np.float_]
+    lattice_constants: npt.NDArray[np.float64]
     rel_dens: float
     ATTRS_TO_COPY: List = ['name', 'lattice_constants', 'UC_L']
     INIT_FORMAT: str = 'Lattice can be initialised in one of 3 ways.'\
