@@ -159,7 +159,7 @@ class Lattice:
             and isinstance(edge_adjacency, Iterable)):
             # Initialization from nodal positions and edge adjacency
             assert edge_coordinates is None, self.INIT_FORMAT
-            nodal_positions = np.atleast_2d(nodal_positions).astype(np.float_)
+            nodal_positions = np.atleast_2d(nodal_positions).astype(np.float64)
             edges = np.atleast_2d(edge_adjacency)
             assert nodal_positions.shape[1]==3
             self.reduced_node_coordinates = nodal_positions
@@ -201,7 +201,7 @@ class Lattice:
             # Initialization from fundamental representation
             assert edge_coordinates is None, self.INIT_FORMAT
             assert isinstance(fundamental_tesselation_vecs, Iterable)
-            nodal_positions = np.atleast_2d(nodal_positions).astype(np.float_)
+            nodal_positions = np.atleast_2d(nodal_positions).astype(np.float64)
             fundamental_edge_adjacency = np.atleast_2d(fundamental_edge_adjacency)
             fundamental_tesselation_vecs = np.atleast_2d(fundamental_tesselation_vecs)
             assert nodal_positions.shape[1]==3
@@ -368,7 +368,7 @@ class Lattice:
         return transform_mat
 
     @property
-    def transform_matrix(self) -> npt.NDArray[np.float_]:
+    def transform_matrix(self) -> npt.NDArray[np.float64]:
         """Assemble transformation matrix from crystal data.
 
         Formula is in the Appendix to the PNAS paper:
@@ -399,9 +399,9 @@ class Lattice:
 
     @staticmethod
     def _rotate_coordinates(
-        coordinates: npt.NDArray[np.float_], 
+        coordinates: npt.NDArray[np.float64], 
         th: float, phi: float, psi: float
-        ) -> npt.NDArray[np.float_]:
+        ) -> npt.NDArray[np.float64]:
         """
         Rotate nodal coordinates or edge vectors.
 
@@ -612,7 +612,7 @@ class Lattice:
         #     self.calculate_fundamental_representation()
 
     @staticmethod
-    def _node_adj_to_ec(nodes, edges) -> npt.NDArray[np.float_]:
+    def _node_adj_to_ec(nodes, edges) -> npt.NDArray[np.float64]:
         ec = np.zeros((edges.shape[0], 6))
         ec[:,:3] = nodes[edges[:,0]]
         ec[:,3:] = nodes[edges[:,1]]
@@ -990,7 +990,7 @@ class Lattice:
         return edge_lengths
     
     @staticmethod
-    def _edge_lengths_from_coords(edge_coords: npt.NDArray[np.float_]):
+    def _edge_lengths_from_coords(edge_coords: npt.NDArray[np.float64]):
         assert edge_coords.shape[1]==6
         p0 = edge_coords[:,:3]
         p1 = edge_coords[:,3:]
