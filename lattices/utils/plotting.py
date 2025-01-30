@@ -11,7 +11,7 @@ import os
 import plotly.express as px
 import plotly.graph_objects as go
 from math import floor
-from typing import Optional, Iterable, Tuple, Callable
+from typing import Optional, Iterable, Tuple, Callable, Literal, Union
 
 
 def parity_plot(true, pred, fn: str):
@@ -52,7 +52,7 @@ def surface_plot(true, pred, dataset, nplot: int, fn: str):
 
 def get_nodes_edge_coords(
     lat, repr, coords, highlight_nodes: Optional[Iterable]=None
-) -> Tuple[np.ndarray, np.ndarray, Iterable, np.ndarray, np.ndarray]:
+) -> Tuple[np.ndarray, np.ndarray, Union[None, Iterable], np.ndarray, np.ndarray]:
 
     nodes = lat.reduced_node_coordinates
 
@@ -187,12 +187,34 @@ def plot_unit_cell_3d(
     return ax
 
 def plotly_unit_cell_3d(
-    lat, repr='cropped', coords='reduced', show_node_numbers=False, 
-    fig=None, subplot: Optional[dict] = None,
+    lat: "Lattice", 
+    repr: Literal['cropped','fundamental'] = 'cropped', 
+    coords: Literal['reduced','transformed'] = 'reduced',
+    show_node_numbers: bool = False,
+    fig: Optional[go.Figure] = None,
+    subplot: Optional[dict] = None,
     highlight_nodes: Optional[Iterable] = None,
     highlight_edges: Optional[Iterable] = None,
     show_uc_box: bool = False
-    ):
+    ) -> go.Figure:
+    """Plot unit cell in 3D using plotly
+
+    Args:
+        lat (Lattice): Unit cell to plot
+        repr (Literal["cropped", "fundamental"], optional): Representation of edges. Defaults to 'cropped'.
+        coords (Literal["reduced", "transformed"], optional): Coordinate system to use. Defaults to 'reduced'.
+        show_node_numbers (bool, optional): Whether to show node numbers. Defaults to False.
+        fig (Optional[go.Figure], optional): Existing plotly figure. Defaults to None.
+        subplot (Optional[dict], optional): Subplot information. 
+            Should contain keys 'index' and 'ncols'. Defaults to None.
+        highlight_nodes (Optional[Iterable], optional): List of node numbers that should be highlighted. Defaults to None.
+        highlight_edges (Optional[Iterable], optional): List of edges that should be highlighted. Defaults to None.
+        show_uc_box (bool, optional): Whether to show unit cell bounding box. Defaults to False.
+
+    Returns:
+        go.Figure: Resulting plotly figure
+    """
+
     nodes, edge_coords, highlight_nodes, node_numbers, edge_widths = get_nodes_edge_coords(
         lat, repr, coords, highlight_nodes
     )

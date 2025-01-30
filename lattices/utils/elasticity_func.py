@@ -146,10 +146,29 @@ def isotropic_S(E=1, nu=0.3) -> np.ndarray:
 ############################
 # Rotation functions
 ############################
-def rotate_4th_order(T : np.ndarray, Q : np.ndarray):
+def rotate_4th_order(T : np.ndarray, Q : np.ndarray) -> np.ndarray:
+    """Rotate 4th order tensor to a new coordinate system
+
+    Args:
+        T (np.ndarray): 3x3 rotation matrix
+        Q (np.ndarray): 4th order tensor
+
+    Returns:
+        np.ndarray: Rotated 4th order tensor
+    """
     out = np.einsum('ia, jb, kc, ld, abcd->ijkl', Q,Q,Q,Q,T)
     return out
-def rotate_Voigt_stiffness(C : np.ndarray, R : np.ndarray):
+
+def rotate_Voigt_stiffness(C : np.ndarray, R : np.ndarray) -> np.ndarray:
+    """Rotate 6x6 stiffness matrix in Voigt notation
+
+    Args:
+        C (np.ndarray): 6x6 Voigt stiffness matrix
+        R (np.ndarray): 3x3 rotation matrix
+
+    Returns:
+        np.ndarray: Rotated 6x6 Voigt stiffness matrix
+    """
     K1 = R**2
     K2 = R[:,[1,2,0]]*R[:,[2,0,1]]
     K3 = R[[1,2,0],:]*R[[2,0,1],:]
@@ -159,7 +178,17 @@ def rotate_Voigt_stiffness(C : np.ndarray, R : np.ndarray):
         [K3, K4]
     ])
     return K @ C @ (K.T)
-def rotate_Voigt_compliance(S : np.ndarray, R : np.ndarray):
+
+def rotate_Voigt_compliance(S : np.ndarray, R : np.ndarray) -> np.ndarray:
+    """Rotate 6x6 compliance matrix in Voigt notation
+
+    Args:
+        S (np.ndarray): 6x6 Voigt compliance matrix
+        R (np.ndarray): 3x3 rotation matrix
+
+    Returns:
+        np.ndarray: Rotated 6x6 Voigt compliance matrix
+    """
     K1 = R**2
     K2 = R[:,[1,2,0]]*R[:,[2,0,1]]
     K3 = R[[1,2,0],:]*R[[2,0,1],:]
@@ -175,6 +204,12 @@ def rotate_Voigt_compliance(S : np.ndarray, R : np.ndarray):
     return K_T @ S @ np.linalg.inv(K)
 
 def Voigt_rot_matrix_stress_inplace(Q: Union[np.ndarray, Tensor], R: Union[np.ndarray, Tensor]) -> None:
+    """Fill the 6x6 rotation matrix for Voigt stress vector
+
+    Args:
+        Q (Union[np.ndarray, Tensor]): 3x3 rotation matrix
+        R (Union[np.ndarray, Tensor]): 6x6 rotation matrix to be filled
+    """
     assert Q.shape[-1] == 3 and Q.shape[-2] == 3
     assert R.shape[-1] == 6 and R.shape[-2] == 6
     A11 = Q**2
@@ -191,6 +226,14 @@ def Voigt_rot_matrix_stress_inplace(Q: Union[np.ndarray, Tensor], R: Union[np.nd
     R[...,3:6,3:6] = A22
 
 def Voigt_rot_matrix_stress_numpy(Q: np.ndarray) -> np.ndarray:
+    """Generate 6x6 rotation matrix for Voigt stress vector
+
+    Args:
+        Q (np.ndarray): 3x3 rotation matrix
+
+    Returns:
+        np.ndarray: 6x6 rotation matrix for Voigt stress vector
+    """
     if Q.ndim == 2:
         R = np.zeros((6,6))
     elif Q.ndim == 3:
@@ -199,6 +242,12 @@ def Voigt_rot_matrix_stress_numpy(Q: np.ndarray) -> np.ndarray:
     return R
 
 def Voigt_rot_matrix_strain_inplace(Q: Union[np.ndarray, Tensor], R: Union[np.ndarray, Tensor]) -> None:
+    """Fill the 6x6 rotation matrix for Voigt strain vector
+
+    Args:
+        Q (Union[np.ndarray, Tensor]): 3x3 rotation matrix
+        R (Union[np.ndarray, Tensor]): 6x6 rotation matrix to be filled
+    """
     assert Q.shape[-1] == 3 and Q.shape[-2] == 3
     assert R.shape[-1] == 6 and R.shape[-2] == 6
     A11 = Q**2
@@ -215,6 +264,14 @@ def Voigt_rot_matrix_strain_inplace(Q: Union[np.ndarray, Tensor], R: Union[np.nd
     R[...,3:6,3:6] = A22
 
 def Voigt_rot_matrix_strain_numpy(Q: np.ndarray) -> np.ndarray:
+    """Generate 6x6 rotation matrix for Voigt strain vector
+
+    Args:
+        Q (np.ndarray): 3x3 rotation matrix
+
+    Returns:
+        np.ndarray: 6x6 rotation matrix for Voigt strain vector
+    """
     if Q.ndim == 2:
         R = np.zeros((6,6))
     elif Q.ndim == 3:
@@ -223,6 +280,12 @@ def Voigt_rot_matrix_strain_numpy(Q: np.ndarray) -> np.ndarray:
     return R
 
 def Mandel_rot_matrix_inplace(Q: Union[np.ndarray, Tensor], R: Union[np.ndarray, Tensor]) -> None:
+    """Fill the 6x6 rotation matrix for Mandel stress/strain vector
+
+    Args:
+        Q (Union[np.ndarray, Tensor]): 3x3 rotation matrix
+        R (Union[np.ndarray, Tensor]): 6x6 rotation matrix to be filled
+    """
     assert Q.shape[-1] == 3 and Q.shape[-2] == 3
     assert R.shape[-1] == 6 and R.shape[-2] == 6
     A11 = Q**2
@@ -237,6 +300,14 @@ def Mandel_rot_matrix_inplace(Q: Union[np.ndarray, Tensor], R: Union[np.ndarray,
     R[...,3:6,3:6] = A22
 
 def Mandel_rot_matrix_numpy(Q: np.ndarray) -> np.ndarray:
+    """Generate 6x6 rotation matrix for Mandel stress/strain vector
+
+    Args:
+        Q (np.ndarray): 3x3 rotation matrix
+
+    Returns:
+        np.ndarray: 6x6 rotation matrix for Mandel stress/strain vector
+    """
     if Q.ndim == 2:
         R = np.zeros((6,6))
     elif Q.ndim == 3:
@@ -245,6 +316,12 @@ def Mandel_rot_matrix_numpy(Q: np.ndarray) -> np.ndarray:
     return R
 # %%
 def tens_2d_to_Mandel_inplace(s: Union[np.ndarray, Tensor], x: Union[np.ndarray, Tensor]) -> None:
+    """Fill Mandel vector from 2nd order tensor
+
+    Args:
+        s (Union[np.ndarray, Tensor]): 2nd order tensor
+        x (Union[np.ndarray, Tensor]): Mandel vector
+    """
     assert s.shape[-1] == 3 and s.shape[-2] == 3
     assert x.shape[-1] == 6
     x[...,0] = s[...,0,0]
@@ -256,6 +333,14 @@ def tens_2d_to_Mandel_inplace(s: Union[np.ndarray, Tensor], x: Union[np.ndarray,
     x[...,5] = s2 * s[...,0,1]
 
 def tens_2d_to_Mandel_numpy(s: np.ndarray) -> np.ndarray:
+    """Convert 2nd order tensor to Mandel vector
+
+    Args:
+        s (np.ndarray): 2nd order tensor
+
+    Returns:
+        np.ndarray: Mandel vector
+    """
     assert np.allclose(s, s.swapaxes(-1,-2)), "s is not symmetric"
     if s.ndim == 2:
         x = np.zeros((6))
@@ -265,6 +350,12 @@ def tens_2d_to_Mandel_numpy(s: np.ndarray) -> np.ndarray:
     return x
 
 def stress_to_Voigt_inplace(s: Union[np.ndarray, Tensor], x: Union[np.ndarray, Tensor]) -> None:
+    """Fill Voigt notation vector from 2nd order stress tensor
+
+    Args:
+        s (Union[np.ndarray, Tensor]): 2nd order stress tensor
+        x (Union[np.ndarray, Tensor]): Voigt stress vector
+    """
     assert s.shape[-1] == 3 and s.shape[-2] == 3
     assert x.shape[-1] == 6
     x[...,0] = s[...,0,0]
@@ -275,6 +366,14 @@ def stress_to_Voigt_inplace(s: Union[np.ndarray, Tensor], x: Union[np.ndarray, T
     x[...,5] = s[...,0,1]
 
 def stress_to_Voigt_numpy(s: np.ndarray) -> np.ndarray:
+    """Convert 2nd order stress tensor to Voigt notation
+
+    Args:
+        s (np.ndarray): 2nd order stress tensor
+
+    Returns:
+        np.ndarray: Voigt stress vector
+    """
     assert np.allclose(s, s.swapaxes(-1,-2)), "s is not symmetric"
     if s.ndim == 2:
         x = np.zeros((6))
@@ -284,6 +383,12 @@ def stress_to_Voigt_numpy(s: np.ndarray) -> np.ndarray:
     return x
 
 def strain_to_Voigt_inplace(e: Union[np.ndarray, Tensor], x: Union[np.ndarray, Tensor]) -> None:
+    """Fill Voigt notation vector from 2nd order strain tensor
+
+    Args:
+        e (Union[np.ndarray, Tensor]): 2nd order strain tensor
+        x (Union[np.ndarray, Tensor]): Voigt strain vector
+    """
     assert e.shape[-1] == 3 and e.shape[-2] == 3
     assert x.shape[-1] == 6
     x[...,0] = e[...,0,0]
@@ -294,6 +399,14 @@ def strain_to_Voigt_inplace(e: Union[np.ndarray, Tensor], x: Union[np.ndarray, T
     x[...,5] = 2 * e[...,0,1]
 
 def strain_to_Voigt_numpy(e: np.ndarray) -> np.ndarray:
+    """Convert 2nd order strain tensor to Voigt notation
+
+    Args:
+        e (np.ndarray): 2nd order strain tensor
+
+    Returns:
+        np.ndarray: Voigt strain vector
+    """
     assert np.allclose(e, e.swapaxes(-1,-2)), "e is not symmetric"
     if e.ndim == 2:
         x = np.zeros((6))
@@ -302,7 +415,15 @@ def strain_to_Voigt_numpy(e: np.ndarray) -> np.ndarray:
     strain_to_Voigt_inplace(e, x)
     return x
 
-def compliance_Voigt_to_4th_order( S : np.ndarray ):
+def compliance_Voigt_to_4th_order(S : np.ndarray) -> np.ndarray:
+    """Convert Voigt notation compliance matrix to 4th order tensor
+
+    Args:
+        S (np.ndarray): 6x6 Voigt notation compliance matrix
+
+    Returns:
+        np.ndarray: 4th order compliance tensor
+    """
     if S.ndim==2:
         _S = S.reshape((1,6,6))
     elif S.ndim==3:
@@ -344,7 +465,15 @@ def compliance_Voigt_to_4th_order( S : np.ndarray ):
     else:
         return S_4
 # %%
-def compliance_4th_order_to_Voigt( S : np.ndarray ):
+def compliance_4th_order_to_Voigt(S : np.ndarray) -> np.ndarray:
+    """Convert 4th order compliance tensor to Voigt notation
+
+    Args:
+        S (np.ndarray): 4th order compliance tensor
+
+    Returns:
+        np.ndarray: 6x6 Voigt notation compliance matrix
+    """
     if S.ndim==4:
         _S = S.reshape((1,3,3,3,3))
     elif S.ndim==5:
@@ -382,6 +511,17 @@ def compliance_4th_order_to_Voigt( S : np.ndarray ):
         return S_2
 # %%
 def stiffness_4th_order_to_Voigt(C: np.ndarray) -> np.ndarray:
+    """Convert 4th order stiffness tensor to Voigt notation
+
+    Args:
+        C (np.ndarray): 4th order stiffness tensor
+
+    Raises:
+        ValueError: Wrong shape of C
+
+    Returns:
+        np.ndarray: 6x6 Voigt notation stiffness matrix
+    """
     if C.ndim==5:
         _C = C
     elif C.ndim==4:
@@ -415,7 +555,15 @@ def stiffness_4th_order_to_Voigt(C: np.ndarray) -> np.ndarray:
     else:
         return C_2[0,:,:]
 # %%
-def stiffness_Voigt_to_4th_order(C: np.ndarray):
+def stiffness_Voigt_to_4th_order(C: np.ndarray) -> np.ndarray:
+    """Convert Voigt notation stiffness matrix to 4th order tensor
+
+    Args:
+        C (np.ndarray): 6x6 Voigt notation stiffness matrix
+
+    Returns:
+        np.ndarray: 4th order stiffness tensor
+    """
     # convert C_ij to C_abcd 
     if C.ndim==3:
         _C = C
@@ -458,6 +606,14 @@ def stiffness_Voigt_to_4th_order(C: np.ndarray):
         return C4[0,:,:,:,:]
     
 def stiffness_Voigt_to_Mandel(C: np.ndarray) -> np.ndarray:
+    """Convert Voigt notation stiffness matrix to Mandel notation
+
+    Args:
+        C (np.ndarray): 6x6 Voigt notation stiffness matrix
+
+    Returns:
+        np.ndarray: 6x6 Mandel notation stiffness matrix
+    """
     s2 = np.sqrt(2)
     mask = np.block([[np.ones((3,3)), s2*np.ones((3,3))],
                     [s2*np.ones((3,3)), 2*np.ones((3,3))]])    
@@ -465,6 +621,14 @@ def stiffness_Voigt_to_Mandel(C: np.ndarray) -> np.ndarray:
     return C_2
 
 def stiffness_Mandel_to_Voigt(C: np.ndarray) -> np.ndarray:
+    """Convert Mandel notation stiffness matrix to Voigt notation
+
+    Args:
+        C (np.ndarray): 6x6 Mandel notation stiffness matrix
+
+    Returns:
+        np.ndarray: 6x6 Voigt notation stiffness matrix
+    """
     s2 = np.sqrt(2)
     mask = np.block([[np.ones((3,3)), s2*np.ones((3,3))],
                      [s2*np.ones((3,3)), 2*np.ones((3,3))]])
@@ -472,6 +636,14 @@ def stiffness_Mandel_to_Voigt(C: np.ndarray) -> np.ndarray:
     return C_2
 
 def compliance_Voigt_to_Mandel(S: np.ndarray) -> np.ndarray:
+    """Convert Voigt notation compliance matrix to Mandel notation
+
+    Args:
+        S (np.ndarray): 6x6 Voigt notation compliance matrix
+
+    Returns:
+        np.ndarray: 6x6 Mandel notation compliance matrix
+    """
     s2 = np.sqrt(2)
     mask = np.block([[np.ones((3,3)), s2*np.ones((3,3))],
                     [s2*np.ones((3,3)), 2*np.ones((3,3))]])    
@@ -479,6 +651,14 @@ def compliance_Voigt_to_Mandel(S: np.ndarray) -> np.ndarray:
     return S_2
 
 def compliance_Mandel_to_Voigt(S: np.ndarray) -> np.ndarray:
+    """Convert Mandel notation compliance matrix to Voigt notation
+
+    Args:
+        S (np.ndarray): 6x6 Mandel notation compliance matrix
+
+    Returns:
+        np.ndarray: 6x6 Voigt notation compliance matrix
+    """
     s2 = np.sqrt(2)
     mask = np.block([[np.ones((3,3)), s2*np.ones((3,3))],
                      [s2*np.ones((3,3)), 2*np.ones((3,3))]])
@@ -486,6 +666,14 @@ def compliance_Mandel_to_Voigt(S: np.ndarray) -> np.ndarray:
     return S_2
     
 def numpy_cart_4_to_Mandel(_C: np.ndarray) -> np.ndarray:
+    """Convert 4th order tensor to 6x6 Mandel notation
+
+    Args:
+        _C (np.ndarray): 4th order tensor of shape (...,3,3,3,3)
+
+    Returns:
+        np.ndarray: 6x6 Mandel notation tensor
+    """
     s2 = np.sqrt(2)
     mask = np.block([[np.ones((3,3)), s2*np.ones((3,3))],
                      [s2*np.ones((3,3)), 2*np.ones((3,3))]])
@@ -501,6 +689,14 @@ def numpy_cart_4_to_Mandel(_C: np.ndarray) -> np.ndarray:
     return C_2
 
 def numpy_Mandel_to_cart_4(C: np.ndarray) -> np.ndarray:
+    """Convert 6x6 Mandel notation tensor to 4th order tensor
+
+    Args:
+        C (np.ndarray): Mandel notation tensor (...,6,6)
+
+    Returns:
+        np.ndarray: 4th order tensor of shape (...,3,3,3,3)
+    """
     # convert C_ij to C_abcd
     if C.ndim>2:
         assert C.shape[-1]==6 and C.shape[-2]==6
@@ -516,7 +712,16 @@ def numpy_Mandel_to_cart_4(C: np.ndarray) -> np.ndarray:
         C4 = C4[0, ...] # remove batch dimension
     return C4
 # %% Young's modulus in a specific direction
-def Youngs_modulus(S : np.ndarray, d : np.ndarray):
+def Youngs_modulus(S : np.ndarray, d : np.ndarray) -> np.ndarray:
+    """Calculate Young's modulus in a specific direction
+
+    Args:
+        S (np.ndarray): Compliance tensor (3,3,3,3)
+        d (np.ndarray): Direction vector (...,3)
+
+    Returns:
+        np.ndarray: _description_
+    """
     assert S.shape==(3,3,3,3)
     if d.ndim==1:
         assert np.allclose(np.linalg.norm(d), 1.0)
