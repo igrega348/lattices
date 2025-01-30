@@ -1,0 +1,1465 @@
+*Heading
+** Start header
+**Relative densities: 0.05,0.1
+**Lattice name: bcc-sc
+**Unit cell volume: 1.0
+**Date: 2025-01-30
+**Job name: bcc-sc
+** End header
+**
+**
+*Material, name=Material-1
+*Elastic
+1., 0.3
+**
+** PARTS
+**
+*Part, name=LATTICE
+**
+*Node
+1, 4.5605847e-17, 0.20481, 0.53999
+2, 6.8001575e-17, 0.20481, 0.90574
+3, 6.8001575e-17, 0.38768, 0.72287
+4, 6.8001575e-17, 0.57056, 0.53999
+5, 9.0397303e-17, 0.57056, 0.90574
+6, 0.18288, 4.4263022e-17, 0.72287
+7, 0.18288, 0.38768, 0
+8, 0.18288, 0.38768, 0.72287
+9, 0.18288, 0.38768, 1
+10, 0.18288, 1, 0.72287
+11, 0.46001, 0.11055, 0
+12, 0.46001, 0.11055, 1
+13, 0.46001, 0.66481, 0
+14, 0.46001, 0.66481, 1
+15, 0.57056, 6.7692352e-18, 0.11055
+16, 0.57056, 2.0524468e-17, 0.33519
+17, 0.57056, 1, 0.11055
+18, 0.57056, 1, 0.33519
+19, 0.68288, 0.88768, 0.22287
+20, 0.79519, 6.7692352e-18, 0.11055
+21, 0.79519, 2.0524468e-17, 0.33519
+22, 0.79519, 1, 0.11055
+23, 0.79519, 1, 0.33519
+24, 0.90574, 0.11055, 0
+25, 0.90574, 0.11055, 1
+26, 0.90574, 0.66481, 0
+27, 0.90574, 0.66481, 1
+28, 1, 0.20481, 0.53999
+29, 1, 0.20481, 0.90574
+30, 1, 0.38768, 0.72287
+31, 1, 0.57056, 0.53999
+32, 1, 0.57056, 0.90574
+33, 0.06096, 0.26576667, 0.60095
+34, 0.12192, 0.32672333, 0.66191
+35, 0.06096, 0.26576667, 0.84478333
+36, 0.12192, 0.32672333, 0.78382667
+37, 0.06096, 0.38768, 0.72287
+38, 0.12192, 0.38768, 0.72287
+39, 0.06096, 0.5096, 0.60095
+40, 0.12192, 0.44864, 0.66191
+41, 0.06096, 0.5096, 0.84478333
+42, 0.12192, 0.44864, 0.78382667
+43, 0.18288, 0.12922667, 0.72287
+44, 0.18288, 0.25845333, 0.72287
+45, 0.18288, 0.38768, 0.24095667
+46, 0.18288, 0.38768, 0.48191333
+47, 0.45525333, 0.38768, 0.72287
+48, 0.72762667, 0.38768, 0.72287
+49, 0.31210667, 0.25845333, 0.59364333
+50, 0.44133333, 0.12922667, 0.46441667
+51, 0.27525667, 0.48005667, 0.81524667
+52, 0.36763333, 0.57243333, 0.90762333
+53, 0.34954667, 0.55434667, 0.55620333
+54, 0.51621333, 0.72101333, 0.38953667
+55, 0.18288, 0.59178667, 0.72287
+56, 0.18288, 0.79589333, 0.72287
+57, 0.18288, 0.38768, 0.81524667
+58, 0.18288, 0.38768, 0.90762333
+59, 0.27525667, 0.29530333, 0.81524667
+60, 0.36763333, 0.20292667, 0.90762333
+61, 0.49686, 0.0737, 0.03685
+62, 0.53371, 0.03685, 0.0737
+63, 0.5343, 0.7391, 0.07429
+64, 0.60859, 0.81339, 0.14858
+65, 0.608, 0.96256, 0.14799
+66, 0.64544, 0.92512, 0.18543
+67, 0.608, 0.96256, 0.29775
+68, 0.64544, 0.92512, 0.26031
+69, 0.72031667, 0.92512, 0.18543
+70, 0.75775333, 0.96256, 0.14799
+71, 0.72031667, 0.92512, 0.26031
+72, 0.75775333, 0.96256, 0.29775
+73, 0.75716667, 0.81339, 0.14858
+74, 0.83145333, 0.7391, 0.07429
+75, 0.78858667, 0.78197333, 0.32857667
+76, 0.89429333, 0.67626667, 0.43428333
+77, 0.83204, 0.03685, 0.0737
+78, 0.86889, 0.0737, 0.03685
+79, 0.86346, 0.06827, 0.40345667
+80, 0.93173, 0.13654, 0.47172333
+81, 0.93716, 0.14197, 0.96858
+82, 0.96858, 0.17339, 0.93716
+83, 0.93716, 0.63339333, 0.96858
+84, 0.96858, 0.60197667, 0.93716
+**
+** Elements with element sets
+*Element, type=B31, elset=STRUT_0-7
+1, 1, 33
+2, 33, 34
+3, 34, 8
+*Element, type=B31, elset=STRUT_1-7
+4, 2, 35
+5, 35, 36
+6, 36, 8
+*Element, type=B31, elset=STRUT_2-7
+7, 3, 37
+8, 37, 38
+9, 38, 8
+*Element, type=B31, elset=STRUT_3-7
+10, 4, 39
+11, 39, 40
+12, 40, 8
+*Element, type=B31, elset=STRUT_4-7
+13, 5, 41
+14, 41, 42
+15, 42, 8
+*Element, type=B31, elset=STRUT_5-7
+16, 6, 43
+17, 43, 44
+18, 44, 8
+*Element, type=B31, elset=STRUT_6-7
+19, 7, 45
+20, 45, 46
+21, 46, 8
+*Element, type=B31, elset=STRUT_7-29
+22, 8, 47
+23, 47, 48
+24, 48, 30
+*Element, type=B31, elset=STRUT_7-15
+25, 8, 49
+26, 49, 50
+27, 50, 16
+*Element, type=B31, elset=STRUT_7-13
+28, 8, 51
+29, 51, 52
+30, 52, 14
+*Element, type=B31, elset=STRUT_7-18
+31, 8, 53
+32, 53, 54
+33, 54, 19
+*Element, type=B31, elset=STRUT_7-9
+34, 8, 55
+35, 55, 56
+36, 56, 10
+*Element, type=B31, elset=STRUT_7-8
+37, 8, 57
+38, 57, 58
+39, 58, 9
+*Element, type=B31, elset=STRUT_7-11
+40, 8, 59
+41, 59, 60
+42, 60, 12
+*Element, type=B31, elset=STRUT_10-14
+43, 11, 61
+44, 61, 62
+45, 62, 15
+*Element, type=B31, elset=STRUT_12-18
+46, 13, 63
+47, 63, 64
+48, 64, 19
+*Element, type=B31, elset=STRUT_16-18
+49, 17, 65
+50, 65, 66
+51, 66, 19
+*Element, type=B31, elset=STRUT_17-18
+52, 18, 67
+53, 67, 68
+54, 68, 19
+*Element, type=B31, elset=STRUT_18-21
+55, 19, 69
+56, 69, 70
+57, 70, 22
+*Element, type=B31, elset=STRUT_18-22
+58, 19, 71
+59, 71, 72
+60, 72, 23
+*Element, type=B31, elset=STRUT_18-25
+61, 19, 73
+62, 73, 74
+63, 74, 26
+*Element, type=B31, elset=STRUT_18-30
+64, 19, 75
+65, 75, 76
+66, 76, 31
+*Element, type=B31, elset=STRUT_19-23
+67, 20, 77
+68, 77, 78
+69, 78, 24
+*Element, type=B31, elset=STRUT_20-27
+70, 21, 79
+71, 79, 80
+72, 80, 28
+*Element, type=B31, elset=STRUT_24-28
+73, 25, 81
+74, 81, 82
+75, 82, 29
+*Element, type=B31, elset=STRUT_26-31
+76, 27, 83
+77, 83, 84
+78, 84, 32
+**
+* End Part
+**
+*Part, name=INST0-REF1
+*Node
+  1, -0.1, -0.1, -0.1
+*End Part
+*Part, name=INST0-REF2
+*Node
+  1, -0.2, -0.2, -0.2
+*End Part
+**
+*Part, name=INST1-REF1
+*Node
+  1, -0.1, -0.1, -0.1
+*End Part
+*Part, name=INST1-REF2
+*Node
+  1, -0.2, -0.2, -0.2
+*End Part
+**
+**
+** ASSEMBLY
+**
+*Assembly, name=Assembly
+*Instance, name=INST0-LAT, part=LATTICE
+0 0 0
+*Beam Section, elset=STRUT_0-7, material=Material-1, section=CIRC
+0.04003821768818802
+-0.24779, -0.54988, 0.79764, 0.77798, -0.60359, -0.17442
+*Beam Section, elset=STRUT_1-7, material=Material-1, section=CIRC
+0.04003821768818802
+0.56907, 0.22251, 0.79161, 0.58549, -0.7856, -0.20008
+*Beam Section, elset=STRUT_2-7, material=Material-1, section=CIRC
+0.04003821768818802
+0, 0.86419, 0.50317, 0, -0.50317, 0.86419
+*Beam Section, elset=STRUT_3-7, material=Material-1, section=CIRC
+0.04003821768818802
+0.14821, 0.76947, 0.62125, -0.80293, -0.27311, 0.52982
+*Beam Section, elset=STRUT_4-7, material=Material-1, section=CIRC
+0.04003821768818802
+0.80836, 0.50373, 0.30464, 0.11493, -0.64258, 0.75755
+*Beam Section, elset=STRUT_5-7, material=Material-1, section=CIRC
+0.04003821768818802
+0.41804, 0, 0.90843, 0.90843, -6.5038e-17, -0.41804
+*Beam Section, elset=STRUT_6-7, material=Material-1, section=CIRC
+0.04003821768818802
+0.98383, 0.1791, -6.2621e-17, -0.1791, 0.98383, -6.1798e-17
+*Beam Section, elset=STRUT_7-29, material=Material-1, section=CIRC
+0.04003821768818802
+0, 0.75392, 0.65696, 0, -0.65696, 0.75392
+*Beam Section, elset=STRUT_7-15, material=Material-1, section=CIRC
+0.04003821768818802
+0.56123, 0.79419, -0.23296, 0.59303, -0.18953, 0.78256
+*Beam Section, elset=STRUT_7-13, material=Material-1, section=CIRC
+0.04003821768818802
+-0.81635, 0.3949, 0.42145, 0.01533, -0.71465, 0.69932
+*Beam Section, elset=STRUT_7-18, material=Material-1, section=CIRC
+0.04003821768818802
+0.43555, 0.38032, 0.81587, 0.69062, -0.72251, -0.031887
+*Beam Section, elset=STRUT_7-9, material=Material-1, section=CIRC
+0.04003821768818802
+0.023346, 0, 0.99973, 0.99973, -4.5316e-17, -0.023346
+*Beam Section, elset=STRUT_7-8, material=Material-1, section=CIRC
+0.04003821768818802
+0.83691, 0.54734, 0, -0.54734, 0.83691, 0
+*Beam Section, elset=STRUT_7-11, material=Material-1, section=CIRC
+0.04003821768818802
+0.30061, 0.80774, 0.50714, -0.75915, -0.11924, 0.63991
+*Beam Section, elset=STRUT_10-14, material=Material-1, section=CIRC
+0.04003821768818802
+0.25128, 0.79843, 0.54715, -0.77687, -0.17082, 0.60605
+*Beam Section, elset=STRUT_12-18, material=Material-1, section=CIRC
+0.04003821768818802
+-0.69258, -0.028204, 0.72079, 0.43243, -0.81601, 0.38358
+*Beam Section, elset=STRUT_16-18, material=Material-1, section=CIRC
+0.04003821768818802
+0.39311, 0.81631, 0.4232, -0.71563, -0.017373, 0.69826
+*Beam Section, elset=STRUT_17-18, material=Material-1, section=CIRC
+0.04003821768818802
+0.81325, 0.46961, 0.34365, 0.072724, -0.66793, 0.74066
+*Beam Section, elset=STRUT_18-21, material=Material-1, section=CIRC
+0.04003821768818802
+0.65896, 0.088104, 0.747, 0.48216, -0.81172, -0.3296
+*Beam Section, elset=STRUT_18-22, material=Material-1, section=CIRC
+0.04003821768818802
+0.5103, -0.80713, 0.29688, 0.63742, 0.12324, -0.7606
+*Beam Section, elset=STRUT_18-25, material=Material-1, section=CIRC
+0.04003821768818802
+0.80044, 0.53979, 0.26061, 0.16119, -0.6126, 0.77378
+*Beam Section, elset=STRUT_18-30, material=Material-1, section=CIRC
+0.04003821768818802
+0.69229, 0.72105, 0.028757, -0.4329, 0.38309, 0.81599
+*Beam Section, elset=STRUT_19-23, material=Material-1, section=CIRC
+0.04003821768818802
+0.51527, 0.29089, 0.80615, 0.63338, -0.76292, -0.12954
+*Beam Section, elset=STRUT_20-27, material=Material-1, section=CIRC
+0.04003821768818802
+-0.66989, 0.73922, -0.069332, -0.4668, -0.34672, 0.81356
+*Beam Section, elset=STRUT_24-28, material=Material-1, section=CIRC
+0.04003821768818802
+0.67167, 0.066211, 0.73788, 0.46424, -0.81381, -0.34956
+*Beam Section, elset=STRUT_26-31, material=Material-1, section=CIRC
+0.04003821768818802
+0.5938, -0.18845, 0.78223, -0.5604, -0.79448, 0.234
+**
+*End Instance
+*Instance, name=INST0-REF1-A, part=INST0-REF1
+0 0 0
+*End Instance
+*Instance, name=INST0-REF2-A, part=INST0-REF2
+0 0 0
+*End Instance
+*Nset, nset=INST0-REF1, instance=INST0-REF1-A
+  1,
+*Nset, nset=INST0-REF2, instance=INST0-REF2-A
+  1,
+*Nset, nset=INST0-REF-PTS
+  INST0-REF1, INST0-REF2
+**
+** EQUATIONS
+**
+** INST0: Constraint 0, nodes {1,28}
+*Nset, nset=LAT0-PBC_NODE_0, instance=INST0-LAT
+  1,
+*Nset, nset=LAT0-MIRROR_NODE_0, instance=INST0-LAT
+  28,
+*Equation
+2
+LAT0-MIRROR_NODE_0, 4, 1.
+LAT0-PBC_NODE_0, 4, -1.
+*Equation
+2
+LAT0-MIRROR_NODE_0, 5, 1.
+LAT0-PBC_NODE_0, 5, -1.
+*Equation
+2
+LAT0-MIRROR_NODE_0, 6, 1.
+LAT0-PBC_NODE_0, 6, -1.
+*Equation
+3
+LAT0-MIRROR_NODE_0, 1, 1.
+LAT0-PBC_NODE_0, 1, -1.
+INST0-REF1, 1, -1.0
+*Equation
+3
+LAT0-MIRROR_NODE_0, 2, 1.
+LAT0-PBC_NODE_0, 2, -1.
+INST0-REF2, 1, -1.0
+*Equation
+3
+LAT0-MIRROR_NODE_0, 3, 1.
+LAT0-PBC_NODE_0, 3, -1.
+INST0-REF2, 2, -1.0
+** INST0: Constraint 1, nodes {2,29}
+*Nset, nset=LAT0-PBC_NODE_1, instance=INST0-LAT
+  2,
+*Nset, nset=LAT0-MIRROR_NODE_1, instance=INST0-LAT
+  29,
+*Equation
+2
+LAT0-MIRROR_NODE_1, 4, 1.
+LAT0-PBC_NODE_1, 4, -1.
+*Equation
+2
+LAT0-MIRROR_NODE_1, 5, 1.
+LAT0-PBC_NODE_1, 5, -1.
+*Equation
+2
+LAT0-MIRROR_NODE_1, 6, 1.
+LAT0-PBC_NODE_1, 6, -1.
+*Equation
+3
+LAT0-MIRROR_NODE_1, 1, 1.
+LAT0-PBC_NODE_1, 1, -1.
+INST0-REF1, 1, -0.9999999999999999
+*Equation
+3
+LAT0-MIRROR_NODE_1, 2, 1.
+LAT0-PBC_NODE_1, 2, -1.
+INST0-REF2, 1, -0.9999999999999999
+*Equation
+3
+LAT0-MIRROR_NODE_1, 3, 1.
+LAT0-PBC_NODE_1, 3, -1.
+INST0-REF2, 2, -0.9999999999999999
+** INST0: Constraint 2, nodes {3,30}
+*Nset, nset=LAT0-PBC_NODE_2, instance=INST0-LAT
+  3,
+*Nset, nset=LAT0-MIRROR_NODE_2, instance=INST0-LAT
+  30,
+*Equation
+2
+LAT0-MIRROR_NODE_2, 4, 1.
+LAT0-PBC_NODE_2, 4, -1.
+*Equation
+2
+LAT0-MIRROR_NODE_2, 5, 1.
+LAT0-PBC_NODE_2, 5, -1.
+*Equation
+2
+LAT0-MIRROR_NODE_2, 6, 1.
+LAT0-PBC_NODE_2, 6, -1.
+*Equation
+3
+LAT0-MIRROR_NODE_2, 1, 1.
+LAT0-PBC_NODE_2, 1, -1.
+INST0-REF1, 1, -0.9999999999999999
+*Equation
+3
+LAT0-MIRROR_NODE_2, 2, 1.
+LAT0-PBC_NODE_2, 2, -1.
+INST0-REF2, 1, -0.9999999999999999
+*Equation
+3
+LAT0-MIRROR_NODE_2, 3, 1.
+LAT0-PBC_NODE_2, 3, -1.
+INST0-REF2, 2, -0.9999999999999999
+** INST0: Constraint 3, nodes {4,31}
+*Nset, nset=LAT0-PBC_NODE_3, instance=INST0-LAT
+  4,
+*Nset, nset=LAT0-MIRROR_NODE_3, instance=INST0-LAT
+  31,
+*Equation
+2
+LAT0-MIRROR_NODE_3, 4, 1.
+LAT0-PBC_NODE_3, 4, -1.
+*Equation
+2
+LAT0-MIRROR_NODE_3, 5, 1.
+LAT0-PBC_NODE_3, 5, -1.
+*Equation
+2
+LAT0-MIRROR_NODE_3, 6, 1.
+LAT0-PBC_NODE_3, 6, -1.
+*Equation
+3
+LAT0-MIRROR_NODE_3, 1, 1.
+LAT0-PBC_NODE_3, 1, -1.
+INST0-REF1, 1, -0.9999999999999999
+*Equation
+3
+LAT0-MIRROR_NODE_3, 2, 1.
+LAT0-PBC_NODE_3, 2, -1.
+INST0-REF2, 1, -0.9999999999999999
+*Equation
+3
+LAT0-MIRROR_NODE_3, 3, 1.
+LAT0-PBC_NODE_3, 3, -1.
+INST0-REF2, 2, -0.9999999999999999
+** INST0: Constraint 4, nodes {5,32}
+*Nset, nset=LAT0-PBC_NODE_4, instance=INST0-LAT
+  5,
+*Nset, nset=LAT0-MIRROR_NODE_4, instance=INST0-LAT
+  32,
+*Equation
+2
+LAT0-MIRROR_NODE_4, 4, 1.
+LAT0-PBC_NODE_4, 4, -1.
+*Equation
+2
+LAT0-MIRROR_NODE_4, 5, 1.
+LAT0-PBC_NODE_4, 5, -1.
+*Equation
+2
+LAT0-MIRROR_NODE_4, 6, 1.
+LAT0-PBC_NODE_4, 6, -1.
+*Equation
+3
+LAT0-MIRROR_NODE_4, 1, 1.
+LAT0-PBC_NODE_4, 1, -1.
+INST0-REF1, 1, -0.9999999999999999
+*Equation
+3
+LAT0-MIRROR_NODE_4, 2, 1.
+LAT0-PBC_NODE_4, 2, -1.
+INST0-REF2, 1, -0.9999999999999999
+*Equation
+3
+LAT0-MIRROR_NODE_4, 3, 1.
+LAT0-PBC_NODE_4, 3, -1.
+INST0-REF2, 2, -0.9999999999999999
+** INST0: Constraint 5, nodes {10,6}
+*Nset, nset=LAT0-PBC_NODE_5, instance=INST0-LAT
+  10,
+*Nset, nset=LAT0-MIRROR_NODE_5, instance=INST0-LAT
+  6,
+*Equation
+2
+LAT0-MIRROR_NODE_5, 4, 1.
+LAT0-PBC_NODE_5, 4, -1.
+*Equation
+2
+LAT0-MIRROR_NODE_5, 5, 1.
+LAT0-PBC_NODE_5, 5, -1.
+*Equation
+2
+LAT0-MIRROR_NODE_5, 6, 1.
+LAT0-PBC_NODE_5, 6, -1.
+*Equation
+3
+LAT0-MIRROR_NODE_5, 1, 1.
+LAT0-PBC_NODE_5, 1, -1.
+INST0-REF2, 1, 1.0
+*Equation
+3
+LAT0-MIRROR_NODE_5, 2, 1.
+LAT0-PBC_NODE_5, 2, -1.
+INST0-REF1, 2, 1.0
+*Equation
+3
+LAT0-MIRROR_NODE_5, 3, 1.
+LAT0-PBC_NODE_5, 3, -1.
+INST0-REF2, 3, 1.0
+** INST0: Constraint 6, nodes {9,7}
+*Nset, nset=LAT0-PBC_NODE_6, instance=INST0-LAT
+  9,
+*Nset, nset=LAT0-MIRROR_NODE_6, instance=INST0-LAT
+  7,
+*Equation
+2
+LAT0-MIRROR_NODE_6, 4, 1.
+LAT0-PBC_NODE_6, 4, -1.
+*Equation
+2
+LAT0-MIRROR_NODE_6, 5, 1.
+LAT0-PBC_NODE_6, 5, -1.
+*Equation
+2
+LAT0-MIRROR_NODE_6, 6, 1.
+LAT0-PBC_NODE_6, 6, -1.
+*Equation
+3
+LAT0-MIRROR_NODE_6, 1, 1.
+LAT0-PBC_NODE_6, 1, -1.
+INST0-REF2, 2, 1.0
+*Equation
+3
+LAT0-MIRROR_NODE_6, 2, 1.
+LAT0-PBC_NODE_6, 2, -1.
+INST0-REF2, 3, 1.0
+*Equation
+3
+LAT0-MIRROR_NODE_6, 3, 1.
+LAT0-PBC_NODE_6, 3, -1.
+INST0-REF1, 3, 1.0
+** INST0: Constraint 7, nodes {11,12}
+*Nset, nset=LAT0-PBC_NODE_7, instance=INST0-LAT
+  11,
+*Nset, nset=LAT0-MIRROR_NODE_7, instance=INST0-LAT
+  12,
+*Equation
+2
+LAT0-MIRROR_NODE_7, 4, 1.
+LAT0-PBC_NODE_7, 4, -1.
+*Equation
+2
+LAT0-MIRROR_NODE_7, 5, 1.
+LAT0-PBC_NODE_7, 5, -1.
+*Equation
+2
+LAT0-MIRROR_NODE_7, 6, 1.
+LAT0-PBC_NODE_7, 6, -1.
+*Equation
+3
+LAT0-MIRROR_NODE_7, 1, 1.
+LAT0-PBC_NODE_7, 1, -1.
+INST0-REF2, 2, -1.0
+*Equation
+3
+LAT0-MIRROR_NODE_7, 2, 1.
+LAT0-PBC_NODE_7, 2, -1.
+INST0-REF2, 3, -1.0
+*Equation
+3
+LAT0-MIRROR_NODE_7, 3, 1.
+LAT0-PBC_NODE_7, 3, -1.
+INST0-REF1, 3, -1.0
+** INST0: Constraint 8, nodes {13,14}
+*Nset, nset=LAT0-PBC_NODE_8, instance=INST0-LAT
+  13,
+*Nset, nset=LAT0-MIRROR_NODE_8, instance=INST0-LAT
+  14,
+*Equation
+2
+LAT0-MIRROR_NODE_8, 4, 1.
+LAT0-PBC_NODE_8, 4, -1.
+*Equation
+2
+LAT0-MIRROR_NODE_8, 5, 1.
+LAT0-PBC_NODE_8, 5, -1.
+*Equation
+2
+LAT0-MIRROR_NODE_8, 6, 1.
+LAT0-PBC_NODE_8, 6, -1.
+*Equation
+3
+LAT0-MIRROR_NODE_8, 1, 1.
+LAT0-PBC_NODE_8, 1, -1.
+INST0-REF2, 2, -1.0
+*Equation
+3
+LAT0-MIRROR_NODE_8, 2, 1.
+LAT0-PBC_NODE_8, 2, -1.
+INST0-REF2, 3, -1.0
+*Equation
+3
+LAT0-MIRROR_NODE_8, 3, 1.
+LAT0-PBC_NODE_8, 3, -1.
+INST0-REF1, 3, -1.0
+** INST0: Constraint 9, nodes {17,15}
+*Nset, nset=LAT0-PBC_NODE_9, instance=INST0-LAT
+  17,
+*Nset, nset=LAT0-MIRROR_NODE_9, instance=INST0-LAT
+  15,
+*Equation
+2
+LAT0-MIRROR_NODE_9, 4, 1.
+LAT0-PBC_NODE_9, 4, -1.
+*Equation
+2
+LAT0-MIRROR_NODE_9, 5, 1.
+LAT0-PBC_NODE_9, 5, -1.
+*Equation
+2
+LAT0-MIRROR_NODE_9, 6, 1.
+LAT0-PBC_NODE_9, 6, -1.
+*Equation
+3
+LAT0-MIRROR_NODE_9, 1, 1.
+LAT0-PBC_NODE_9, 1, -1.
+INST0-REF2, 1, 1.0
+*Equation
+3
+LAT0-MIRROR_NODE_9, 2, 1.
+LAT0-PBC_NODE_9, 2, -1.
+INST0-REF1, 2, 1.0
+*Equation
+3
+LAT0-MIRROR_NODE_9, 3, 1.
+LAT0-PBC_NODE_9, 3, -1.
+INST0-REF2, 3, 1.0
+** INST0: Constraint 10, nodes {18,16}
+*Nset, nset=LAT0-PBC_NODE_10, instance=INST0-LAT
+  18,
+*Nset, nset=LAT0-MIRROR_NODE_10, instance=INST0-LAT
+  16,
+*Equation
+2
+LAT0-MIRROR_NODE_10, 4, 1.
+LAT0-PBC_NODE_10, 4, -1.
+*Equation
+2
+LAT0-MIRROR_NODE_10, 5, 1.
+LAT0-PBC_NODE_10, 5, -1.
+*Equation
+2
+LAT0-MIRROR_NODE_10, 6, 1.
+LAT0-PBC_NODE_10, 6, -1.
+*Equation
+3
+LAT0-MIRROR_NODE_10, 1, 1.
+LAT0-PBC_NODE_10, 1, -1.
+INST0-REF2, 1, 1.0
+*Equation
+3
+LAT0-MIRROR_NODE_10, 2, 1.
+LAT0-PBC_NODE_10, 2, -1.
+INST0-REF1, 2, 1.0
+*Equation
+3
+LAT0-MIRROR_NODE_10, 3, 1.
+LAT0-PBC_NODE_10, 3, -1.
+INST0-REF2, 3, 1.0
+** INST0: Constraint 11, nodes {20,22}
+*Nset, nset=LAT0-PBC_NODE_11, instance=INST0-LAT
+  20,
+*Nset, nset=LAT0-MIRROR_NODE_11, instance=INST0-LAT
+  22,
+*Equation
+2
+LAT0-MIRROR_NODE_11, 4, 1.
+LAT0-PBC_NODE_11, 4, -1.
+*Equation
+2
+LAT0-MIRROR_NODE_11, 5, 1.
+LAT0-PBC_NODE_11, 5, -1.
+*Equation
+2
+LAT0-MIRROR_NODE_11, 6, 1.
+LAT0-PBC_NODE_11, 6, -1.
+*Equation
+3
+LAT0-MIRROR_NODE_11, 1, 1.
+LAT0-PBC_NODE_11, 1, -1.
+INST0-REF2, 1, -1.0
+*Equation
+3
+LAT0-MIRROR_NODE_11, 2, 1.
+LAT0-PBC_NODE_11, 2, -1.
+INST0-REF1, 2, -1.0
+*Equation
+3
+LAT0-MIRROR_NODE_11, 3, 1.
+LAT0-PBC_NODE_11, 3, -1.
+INST0-REF2, 3, -1.0
+** INST0: Constraint 12, nodes {21,23}
+*Nset, nset=LAT0-PBC_NODE_12, instance=INST0-LAT
+  21,
+*Nset, nset=LAT0-MIRROR_NODE_12, instance=INST0-LAT
+  23,
+*Equation
+2
+LAT0-MIRROR_NODE_12, 4, 1.
+LAT0-PBC_NODE_12, 4, -1.
+*Equation
+2
+LAT0-MIRROR_NODE_12, 5, 1.
+LAT0-PBC_NODE_12, 5, -1.
+*Equation
+2
+LAT0-MIRROR_NODE_12, 6, 1.
+LAT0-PBC_NODE_12, 6, -1.
+*Equation
+3
+LAT0-MIRROR_NODE_12, 1, 1.
+LAT0-PBC_NODE_12, 1, -1.
+INST0-REF2, 1, -1.0
+*Equation
+3
+LAT0-MIRROR_NODE_12, 2, 1.
+LAT0-PBC_NODE_12, 2, -1.
+INST0-REF1, 2, -1.0
+*Equation
+3
+LAT0-MIRROR_NODE_12, 3, 1.
+LAT0-PBC_NODE_12, 3, -1.
+INST0-REF2, 3, -1.0
+** INST0: Constraint 13, nodes {25,24}
+*Nset, nset=LAT0-PBC_NODE_13, instance=INST0-LAT
+  25,
+*Nset, nset=LAT0-MIRROR_NODE_13, instance=INST0-LAT
+  24,
+*Equation
+2
+LAT0-MIRROR_NODE_13, 4, 1.
+LAT0-PBC_NODE_13, 4, -1.
+*Equation
+2
+LAT0-MIRROR_NODE_13, 5, 1.
+LAT0-PBC_NODE_13, 5, -1.
+*Equation
+2
+LAT0-MIRROR_NODE_13, 6, 1.
+LAT0-PBC_NODE_13, 6, -1.
+*Equation
+3
+LAT0-MIRROR_NODE_13, 1, 1.
+LAT0-PBC_NODE_13, 1, -1.
+INST0-REF2, 2, 1.0
+*Equation
+3
+LAT0-MIRROR_NODE_13, 2, 1.
+LAT0-PBC_NODE_13, 2, -1.
+INST0-REF2, 3, 1.0
+*Equation
+3
+LAT0-MIRROR_NODE_13, 3, 1.
+LAT0-PBC_NODE_13, 3, -1.
+INST0-REF1, 3, 1.0
+** INST0: Constraint 14, nodes {26,27}
+*Nset, nset=LAT0-PBC_NODE_14, instance=INST0-LAT
+  26,
+*Nset, nset=LAT0-MIRROR_NODE_14, instance=INST0-LAT
+  27,
+*Equation
+2
+LAT0-MIRROR_NODE_14, 4, 1.
+LAT0-PBC_NODE_14, 4, -1.
+*Equation
+2
+LAT0-MIRROR_NODE_14, 5, 1.
+LAT0-PBC_NODE_14, 5, -1.
+*Equation
+2
+LAT0-MIRROR_NODE_14, 6, 1.
+LAT0-PBC_NODE_14, 6, -1.
+*Equation
+3
+LAT0-MIRROR_NODE_14, 1, 1.
+LAT0-PBC_NODE_14, 1, -1.
+INST0-REF2, 2, -1.0
+*Equation
+3
+LAT0-MIRROR_NODE_14, 2, 1.
+LAT0-PBC_NODE_14, 2, -1.
+INST0-REF2, 3, -1.0
+*Equation
+3
+LAT0-MIRROR_NODE_14, 3, 1.
+LAT0-PBC_NODE_14, 3, -1.
+INST0-REF1, 3, -1.0
+**
+*Instance, name=INST1-LAT, part=LATTICE
+1.5 0 0
+*Beam Section, elset=STRUT_0-7, material=Material-1, section=CIRC
+0.05662259046788185
+-0.24779, -0.54988, 0.79764, 0.77798, -0.60359, -0.17442
+*Beam Section, elset=STRUT_1-7, material=Material-1, section=CIRC
+0.05662259046788185
+0.56907, 0.22251, 0.79161, 0.58549, -0.7856, -0.20008
+*Beam Section, elset=STRUT_2-7, material=Material-1, section=CIRC
+0.05662259046788185
+0, 0.86419, 0.50317, 0, -0.50317, 0.86419
+*Beam Section, elset=STRUT_3-7, material=Material-1, section=CIRC
+0.05662259046788185
+0.14821, 0.76947, 0.62125, -0.80293, -0.27311, 0.52982
+*Beam Section, elset=STRUT_4-7, material=Material-1, section=CIRC
+0.05662259046788185
+0.80836, 0.50373, 0.30464, 0.11493, -0.64258, 0.75755
+*Beam Section, elset=STRUT_5-7, material=Material-1, section=CIRC
+0.05662259046788185
+0.41804, 0, 0.90843, 0.90843, -6.5038e-17, -0.41804
+*Beam Section, elset=STRUT_6-7, material=Material-1, section=CIRC
+0.05662259046788185
+0.98383, 0.1791, -6.2621e-17, -0.1791, 0.98383, -6.1798e-17
+*Beam Section, elset=STRUT_7-29, material=Material-1, section=CIRC
+0.05662259046788185
+0, 0.75392, 0.65696, 0, -0.65696, 0.75392
+*Beam Section, elset=STRUT_7-15, material=Material-1, section=CIRC
+0.05662259046788185
+0.56123, 0.79419, -0.23296, 0.59303, -0.18953, 0.78256
+*Beam Section, elset=STRUT_7-13, material=Material-1, section=CIRC
+0.05662259046788185
+-0.81635, 0.3949, 0.42145, 0.01533, -0.71465, 0.69932
+*Beam Section, elset=STRUT_7-18, material=Material-1, section=CIRC
+0.05662259046788185
+0.43555, 0.38032, 0.81587, 0.69062, -0.72251, -0.031887
+*Beam Section, elset=STRUT_7-9, material=Material-1, section=CIRC
+0.05662259046788185
+0.023346, 0, 0.99973, 0.99973, -4.5316e-17, -0.023346
+*Beam Section, elset=STRUT_7-8, material=Material-1, section=CIRC
+0.05662259046788185
+0.83691, 0.54734, 0, -0.54734, 0.83691, 0
+*Beam Section, elset=STRUT_7-11, material=Material-1, section=CIRC
+0.05662259046788185
+0.30061, 0.80774, 0.50714, -0.75915, -0.11924, 0.63991
+*Beam Section, elset=STRUT_10-14, material=Material-1, section=CIRC
+0.05662259046788185
+0.25128, 0.79843, 0.54715, -0.77687, -0.17082, 0.60605
+*Beam Section, elset=STRUT_12-18, material=Material-1, section=CIRC
+0.05662259046788185
+-0.69258, -0.028204, 0.72079, 0.43243, -0.81601, 0.38358
+*Beam Section, elset=STRUT_16-18, material=Material-1, section=CIRC
+0.05662259046788185
+0.39311, 0.81631, 0.4232, -0.71563, -0.017373, 0.69826
+*Beam Section, elset=STRUT_17-18, material=Material-1, section=CIRC
+0.05662259046788185
+0.81325, 0.46961, 0.34365, 0.072724, -0.66793, 0.74066
+*Beam Section, elset=STRUT_18-21, material=Material-1, section=CIRC
+0.05662259046788185
+0.65896, 0.088104, 0.747, 0.48216, -0.81172, -0.3296
+*Beam Section, elset=STRUT_18-22, material=Material-1, section=CIRC
+0.05662259046788185
+0.5103, -0.80713, 0.29688, 0.63742, 0.12324, -0.7606
+*Beam Section, elset=STRUT_18-25, material=Material-1, section=CIRC
+0.05662259046788185
+0.80044, 0.53979, 0.26061, 0.16119, -0.6126, 0.77378
+*Beam Section, elset=STRUT_18-30, material=Material-1, section=CIRC
+0.05662259046788185
+0.69229, 0.72105, 0.028757, -0.4329, 0.38309, 0.81599
+*Beam Section, elset=STRUT_19-23, material=Material-1, section=CIRC
+0.05662259046788185
+0.51527, 0.29089, 0.80615, 0.63338, -0.76292, -0.12954
+*Beam Section, elset=STRUT_20-27, material=Material-1, section=CIRC
+0.05662259046788185
+-0.66989, 0.73922, -0.069332, -0.4668, -0.34672, 0.81356
+*Beam Section, elset=STRUT_24-28, material=Material-1, section=CIRC
+0.05662259046788185
+0.67167, 0.066211, 0.73788, 0.46424, -0.81381, -0.34956
+*Beam Section, elset=STRUT_26-31, material=Material-1, section=CIRC
+0.05662259046788185
+0.5938, -0.18845, 0.78223, -0.5604, -0.79448, 0.234
+**
+*End Instance
+*Instance, name=INST1-REF1-A, part=INST1-REF1
+1.5 0 0
+*End Instance
+*Instance, name=INST1-REF2-A, part=INST1-REF2
+1.5 0 0
+*End Instance
+*Nset, nset=INST1-REF1, instance=INST1-REF1-A
+  1,
+*Nset, nset=INST1-REF2, instance=INST1-REF2-A
+  1,
+*Nset, nset=INST1-REF-PTS
+  INST1-REF1, INST1-REF2
+**
+** EQUATIONS
+**
+** INST1: Constraint 0, nodes {1,28}
+*Nset, nset=LAT1-PBC_NODE_0, instance=INST1-LAT
+  1,
+*Nset, nset=LAT1-MIRROR_NODE_0, instance=INST1-LAT
+  28,
+*Equation
+2
+LAT1-MIRROR_NODE_0, 4, 1.
+LAT1-PBC_NODE_0, 4, -1.
+*Equation
+2
+LAT1-MIRROR_NODE_0, 5, 1.
+LAT1-PBC_NODE_0, 5, -1.
+*Equation
+2
+LAT1-MIRROR_NODE_0, 6, 1.
+LAT1-PBC_NODE_0, 6, -1.
+*Equation
+3
+LAT1-MIRROR_NODE_0, 1, 1.
+LAT1-PBC_NODE_0, 1, -1.
+INST1-REF1, 1, -1.0
+*Equation
+3
+LAT1-MIRROR_NODE_0, 2, 1.
+LAT1-PBC_NODE_0, 2, -1.
+INST1-REF2, 1, -1.0
+*Equation
+3
+LAT1-MIRROR_NODE_0, 3, 1.
+LAT1-PBC_NODE_0, 3, -1.
+INST1-REF2, 2, -1.0
+** INST1: Constraint 1, nodes {2,29}
+*Nset, nset=LAT1-PBC_NODE_1, instance=INST1-LAT
+  2,
+*Nset, nset=LAT1-MIRROR_NODE_1, instance=INST1-LAT
+  29,
+*Equation
+2
+LAT1-MIRROR_NODE_1, 4, 1.
+LAT1-PBC_NODE_1, 4, -1.
+*Equation
+2
+LAT1-MIRROR_NODE_1, 5, 1.
+LAT1-PBC_NODE_1, 5, -1.
+*Equation
+2
+LAT1-MIRROR_NODE_1, 6, 1.
+LAT1-PBC_NODE_1, 6, -1.
+*Equation
+3
+LAT1-MIRROR_NODE_1, 1, 1.
+LAT1-PBC_NODE_1, 1, -1.
+INST1-REF1, 1, -0.9999999999999999
+*Equation
+3
+LAT1-MIRROR_NODE_1, 2, 1.
+LAT1-PBC_NODE_1, 2, -1.
+INST1-REF2, 1, -0.9999999999999999
+*Equation
+3
+LAT1-MIRROR_NODE_1, 3, 1.
+LAT1-PBC_NODE_1, 3, -1.
+INST1-REF2, 2, -0.9999999999999999
+** INST1: Constraint 2, nodes {3,30}
+*Nset, nset=LAT1-PBC_NODE_2, instance=INST1-LAT
+  3,
+*Nset, nset=LAT1-MIRROR_NODE_2, instance=INST1-LAT
+  30,
+*Equation
+2
+LAT1-MIRROR_NODE_2, 4, 1.
+LAT1-PBC_NODE_2, 4, -1.
+*Equation
+2
+LAT1-MIRROR_NODE_2, 5, 1.
+LAT1-PBC_NODE_2, 5, -1.
+*Equation
+2
+LAT1-MIRROR_NODE_2, 6, 1.
+LAT1-PBC_NODE_2, 6, -1.
+*Equation
+3
+LAT1-MIRROR_NODE_2, 1, 1.
+LAT1-PBC_NODE_2, 1, -1.
+INST1-REF1, 1, -0.9999999999999999
+*Equation
+3
+LAT1-MIRROR_NODE_2, 2, 1.
+LAT1-PBC_NODE_2, 2, -1.
+INST1-REF2, 1, -0.9999999999999999
+*Equation
+3
+LAT1-MIRROR_NODE_2, 3, 1.
+LAT1-PBC_NODE_2, 3, -1.
+INST1-REF2, 2, -0.9999999999999999
+** INST1: Constraint 3, nodes {4,31}
+*Nset, nset=LAT1-PBC_NODE_3, instance=INST1-LAT
+  4,
+*Nset, nset=LAT1-MIRROR_NODE_3, instance=INST1-LAT
+  31,
+*Equation
+2
+LAT1-MIRROR_NODE_3, 4, 1.
+LAT1-PBC_NODE_3, 4, -1.
+*Equation
+2
+LAT1-MIRROR_NODE_3, 5, 1.
+LAT1-PBC_NODE_3, 5, -1.
+*Equation
+2
+LAT1-MIRROR_NODE_3, 6, 1.
+LAT1-PBC_NODE_3, 6, -1.
+*Equation
+3
+LAT1-MIRROR_NODE_3, 1, 1.
+LAT1-PBC_NODE_3, 1, -1.
+INST1-REF1, 1, -0.9999999999999999
+*Equation
+3
+LAT1-MIRROR_NODE_3, 2, 1.
+LAT1-PBC_NODE_3, 2, -1.
+INST1-REF2, 1, -0.9999999999999999
+*Equation
+3
+LAT1-MIRROR_NODE_3, 3, 1.
+LAT1-PBC_NODE_3, 3, -1.
+INST1-REF2, 2, -0.9999999999999999
+** INST1: Constraint 4, nodes {5,32}
+*Nset, nset=LAT1-PBC_NODE_4, instance=INST1-LAT
+  5,
+*Nset, nset=LAT1-MIRROR_NODE_4, instance=INST1-LAT
+  32,
+*Equation
+2
+LAT1-MIRROR_NODE_4, 4, 1.
+LAT1-PBC_NODE_4, 4, -1.
+*Equation
+2
+LAT1-MIRROR_NODE_4, 5, 1.
+LAT1-PBC_NODE_4, 5, -1.
+*Equation
+2
+LAT1-MIRROR_NODE_4, 6, 1.
+LAT1-PBC_NODE_4, 6, -1.
+*Equation
+3
+LAT1-MIRROR_NODE_4, 1, 1.
+LAT1-PBC_NODE_4, 1, -1.
+INST1-REF1, 1, -0.9999999999999999
+*Equation
+3
+LAT1-MIRROR_NODE_4, 2, 1.
+LAT1-PBC_NODE_4, 2, -1.
+INST1-REF2, 1, -0.9999999999999999
+*Equation
+3
+LAT1-MIRROR_NODE_4, 3, 1.
+LAT1-PBC_NODE_4, 3, -1.
+INST1-REF2, 2, -0.9999999999999999
+** INST1: Constraint 5, nodes {10,6}
+*Nset, nset=LAT1-PBC_NODE_5, instance=INST1-LAT
+  10,
+*Nset, nset=LAT1-MIRROR_NODE_5, instance=INST1-LAT
+  6,
+*Equation
+2
+LAT1-MIRROR_NODE_5, 4, 1.
+LAT1-PBC_NODE_5, 4, -1.
+*Equation
+2
+LAT1-MIRROR_NODE_5, 5, 1.
+LAT1-PBC_NODE_5, 5, -1.
+*Equation
+2
+LAT1-MIRROR_NODE_5, 6, 1.
+LAT1-PBC_NODE_5, 6, -1.
+*Equation
+3
+LAT1-MIRROR_NODE_5, 1, 1.
+LAT1-PBC_NODE_5, 1, -1.
+INST1-REF2, 1, 1.0
+*Equation
+3
+LAT1-MIRROR_NODE_5, 2, 1.
+LAT1-PBC_NODE_5, 2, -1.
+INST1-REF1, 2, 1.0
+*Equation
+3
+LAT1-MIRROR_NODE_5, 3, 1.
+LAT1-PBC_NODE_5, 3, -1.
+INST1-REF2, 3, 1.0
+** INST1: Constraint 6, nodes {9,7}
+*Nset, nset=LAT1-PBC_NODE_6, instance=INST1-LAT
+  9,
+*Nset, nset=LAT1-MIRROR_NODE_6, instance=INST1-LAT
+  7,
+*Equation
+2
+LAT1-MIRROR_NODE_6, 4, 1.
+LAT1-PBC_NODE_6, 4, -1.
+*Equation
+2
+LAT1-MIRROR_NODE_6, 5, 1.
+LAT1-PBC_NODE_6, 5, -1.
+*Equation
+2
+LAT1-MIRROR_NODE_6, 6, 1.
+LAT1-PBC_NODE_6, 6, -1.
+*Equation
+3
+LAT1-MIRROR_NODE_6, 1, 1.
+LAT1-PBC_NODE_6, 1, -1.
+INST1-REF2, 2, 1.0
+*Equation
+3
+LAT1-MIRROR_NODE_6, 2, 1.
+LAT1-PBC_NODE_6, 2, -1.
+INST1-REF2, 3, 1.0
+*Equation
+3
+LAT1-MIRROR_NODE_6, 3, 1.
+LAT1-PBC_NODE_6, 3, -1.
+INST1-REF1, 3, 1.0
+** INST1: Constraint 7, nodes {11,12}
+*Nset, nset=LAT1-PBC_NODE_7, instance=INST1-LAT
+  11,
+*Nset, nset=LAT1-MIRROR_NODE_7, instance=INST1-LAT
+  12,
+*Equation
+2
+LAT1-MIRROR_NODE_7, 4, 1.
+LAT1-PBC_NODE_7, 4, -1.
+*Equation
+2
+LAT1-MIRROR_NODE_7, 5, 1.
+LAT1-PBC_NODE_7, 5, -1.
+*Equation
+2
+LAT1-MIRROR_NODE_7, 6, 1.
+LAT1-PBC_NODE_7, 6, -1.
+*Equation
+3
+LAT1-MIRROR_NODE_7, 1, 1.
+LAT1-PBC_NODE_7, 1, -1.
+INST1-REF2, 2, -1.0
+*Equation
+3
+LAT1-MIRROR_NODE_7, 2, 1.
+LAT1-PBC_NODE_7, 2, -1.
+INST1-REF2, 3, -1.0
+*Equation
+3
+LAT1-MIRROR_NODE_7, 3, 1.
+LAT1-PBC_NODE_7, 3, -1.
+INST1-REF1, 3, -1.0
+** INST1: Constraint 8, nodes {13,14}
+*Nset, nset=LAT1-PBC_NODE_8, instance=INST1-LAT
+  13,
+*Nset, nset=LAT1-MIRROR_NODE_8, instance=INST1-LAT
+  14,
+*Equation
+2
+LAT1-MIRROR_NODE_8, 4, 1.
+LAT1-PBC_NODE_8, 4, -1.
+*Equation
+2
+LAT1-MIRROR_NODE_8, 5, 1.
+LAT1-PBC_NODE_8, 5, -1.
+*Equation
+2
+LAT1-MIRROR_NODE_8, 6, 1.
+LAT1-PBC_NODE_8, 6, -1.
+*Equation
+3
+LAT1-MIRROR_NODE_8, 1, 1.
+LAT1-PBC_NODE_8, 1, -1.
+INST1-REF2, 2, -1.0
+*Equation
+3
+LAT1-MIRROR_NODE_8, 2, 1.
+LAT1-PBC_NODE_8, 2, -1.
+INST1-REF2, 3, -1.0
+*Equation
+3
+LAT1-MIRROR_NODE_8, 3, 1.
+LAT1-PBC_NODE_8, 3, -1.
+INST1-REF1, 3, -1.0
+** INST1: Constraint 9, nodes {17,15}
+*Nset, nset=LAT1-PBC_NODE_9, instance=INST1-LAT
+  17,
+*Nset, nset=LAT1-MIRROR_NODE_9, instance=INST1-LAT
+  15,
+*Equation
+2
+LAT1-MIRROR_NODE_9, 4, 1.
+LAT1-PBC_NODE_9, 4, -1.
+*Equation
+2
+LAT1-MIRROR_NODE_9, 5, 1.
+LAT1-PBC_NODE_9, 5, -1.
+*Equation
+2
+LAT1-MIRROR_NODE_9, 6, 1.
+LAT1-PBC_NODE_9, 6, -1.
+*Equation
+3
+LAT1-MIRROR_NODE_9, 1, 1.
+LAT1-PBC_NODE_9, 1, -1.
+INST1-REF2, 1, 1.0
+*Equation
+3
+LAT1-MIRROR_NODE_9, 2, 1.
+LAT1-PBC_NODE_9, 2, -1.
+INST1-REF1, 2, 1.0
+*Equation
+3
+LAT1-MIRROR_NODE_9, 3, 1.
+LAT1-PBC_NODE_9, 3, -1.
+INST1-REF2, 3, 1.0
+** INST1: Constraint 10, nodes {18,16}
+*Nset, nset=LAT1-PBC_NODE_10, instance=INST1-LAT
+  18,
+*Nset, nset=LAT1-MIRROR_NODE_10, instance=INST1-LAT
+  16,
+*Equation
+2
+LAT1-MIRROR_NODE_10, 4, 1.
+LAT1-PBC_NODE_10, 4, -1.
+*Equation
+2
+LAT1-MIRROR_NODE_10, 5, 1.
+LAT1-PBC_NODE_10, 5, -1.
+*Equation
+2
+LAT1-MIRROR_NODE_10, 6, 1.
+LAT1-PBC_NODE_10, 6, -1.
+*Equation
+3
+LAT1-MIRROR_NODE_10, 1, 1.
+LAT1-PBC_NODE_10, 1, -1.
+INST1-REF2, 1, 1.0
+*Equation
+3
+LAT1-MIRROR_NODE_10, 2, 1.
+LAT1-PBC_NODE_10, 2, -1.
+INST1-REF1, 2, 1.0
+*Equation
+3
+LAT1-MIRROR_NODE_10, 3, 1.
+LAT1-PBC_NODE_10, 3, -1.
+INST1-REF2, 3, 1.0
+** INST1: Constraint 11, nodes {20,22}
+*Nset, nset=LAT1-PBC_NODE_11, instance=INST1-LAT
+  20,
+*Nset, nset=LAT1-MIRROR_NODE_11, instance=INST1-LAT
+  22,
+*Equation
+2
+LAT1-MIRROR_NODE_11, 4, 1.
+LAT1-PBC_NODE_11, 4, -1.
+*Equation
+2
+LAT1-MIRROR_NODE_11, 5, 1.
+LAT1-PBC_NODE_11, 5, -1.
+*Equation
+2
+LAT1-MIRROR_NODE_11, 6, 1.
+LAT1-PBC_NODE_11, 6, -1.
+*Equation
+3
+LAT1-MIRROR_NODE_11, 1, 1.
+LAT1-PBC_NODE_11, 1, -1.
+INST1-REF2, 1, -1.0
+*Equation
+3
+LAT1-MIRROR_NODE_11, 2, 1.
+LAT1-PBC_NODE_11, 2, -1.
+INST1-REF1, 2, -1.0
+*Equation
+3
+LAT1-MIRROR_NODE_11, 3, 1.
+LAT1-PBC_NODE_11, 3, -1.
+INST1-REF2, 3, -1.0
+** INST1: Constraint 12, nodes {21,23}
+*Nset, nset=LAT1-PBC_NODE_12, instance=INST1-LAT
+  21,
+*Nset, nset=LAT1-MIRROR_NODE_12, instance=INST1-LAT
+  23,
+*Equation
+2
+LAT1-MIRROR_NODE_12, 4, 1.
+LAT1-PBC_NODE_12, 4, -1.
+*Equation
+2
+LAT1-MIRROR_NODE_12, 5, 1.
+LAT1-PBC_NODE_12, 5, -1.
+*Equation
+2
+LAT1-MIRROR_NODE_12, 6, 1.
+LAT1-PBC_NODE_12, 6, -1.
+*Equation
+3
+LAT1-MIRROR_NODE_12, 1, 1.
+LAT1-PBC_NODE_12, 1, -1.
+INST1-REF2, 1, -1.0
+*Equation
+3
+LAT1-MIRROR_NODE_12, 2, 1.
+LAT1-PBC_NODE_12, 2, -1.
+INST1-REF1, 2, -1.0
+*Equation
+3
+LAT1-MIRROR_NODE_12, 3, 1.
+LAT1-PBC_NODE_12, 3, -1.
+INST1-REF2, 3, -1.0
+** INST1: Constraint 13, nodes {25,24}
+*Nset, nset=LAT1-PBC_NODE_13, instance=INST1-LAT
+  25,
+*Nset, nset=LAT1-MIRROR_NODE_13, instance=INST1-LAT
+  24,
+*Equation
+2
+LAT1-MIRROR_NODE_13, 4, 1.
+LAT1-PBC_NODE_13, 4, -1.
+*Equation
+2
+LAT1-MIRROR_NODE_13, 5, 1.
+LAT1-PBC_NODE_13, 5, -1.
+*Equation
+2
+LAT1-MIRROR_NODE_13, 6, 1.
+LAT1-PBC_NODE_13, 6, -1.
+*Equation
+3
+LAT1-MIRROR_NODE_13, 1, 1.
+LAT1-PBC_NODE_13, 1, -1.
+INST1-REF2, 2, 1.0
+*Equation
+3
+LAT1-MIRROR_NODE_13, 2, 1.
+LAT1-PBC_NODE_13, 2, -1.
+INST1-REF2, 3, 1.0
+*Equation
+3
+LAT1-MIRROR_NODE_13, 3, 1.
+LAT1-PBC_NODE_13, 3, -1.
+INST1-REF1, 3, 1.0
+** INST1: Constraint 14, nodes {26,27}
+*Nset, nset=LAT1-PBC_NODE_14, instance=INST1-LAT
+  26,
+*Nset, nset=LAT1-MIRROR_NODE_14, instance=INST1-LAT
+  27,
+*Equation
+2
+LAT1-MIRROR_NODE_14, 4, 1.
+LAT1-PBC_NODE_14, 4, -1.
+*Equation
+2
+LAT1-MIRROR_NODE_14, 5, 1.
+LAT1-PBC_NODE_14, 5, -1.
+*Equation
+2
+LAT1-MIRROR_NODE_14, 6, 1.
+LAT1-PBC_NODE_14, 6, -1.
+*Equation
+3
+LAT1-MIRROR_NODE_14, 1, 1.
+LAT1-PBC_NODE_14, 1, -1.
+INST1-REF2, 2, -1.0
+*Equation
+3
+LAT1-MIRROR_NODE_14, 2, 1.
+LAT1-PBC_NODE_14, 2, -1.
+INST1-REF2, 3, -1.0
+*Equation
+3
+LAT1-MIRROR_NODE_14, 3, 1.
+LAT1-PBC_NODE_14, 3, -1.
+INST1-REF1, 3, -1.0
+**
+*End Assembly
+**
+** STEPS
+*Step, name=Load-REF1-dof1, nlgeom=NO
+*Static
+1., 1., 1e-5, 1
+*Boundary, OP=NEW
+INST0-REF1, 1, 1, 1.0
+*Boundary, OP=NEW
+INST1-REF1, 1, 1, 1.0
+*Restart, write, frequency=0
+*Output, field, variable=PRESELECT
+*Output, history, variable=PRESELECT
+*End Step
+**
+*Step, name=Load-REF1-dof2, nlgeom=NO
+*Static
+1., 1., 1e-5, 1
+*Boundary, OP=NEW
+INST0-REF1, 2, 2, 1.0
+*Boundary, OP=NEW
+INST1-REF1, 2, 2, 1.0
+*Restart, write, frequency=0
+*Output, field, variable=PRESELECT
+*Output, history, variable=PRESELECT
+*End Step
+**
+*Step, name=Load-REF1-dof3, nlgeom=NO
+*Static
+1., 1., 1e-5, 1
+*Boundary, OP=NEW
+INST0-REF1, 3, 3, 1.0
+*Boundary, OP=NEW
+INST1-REF1, 3, 3, 1.0
+*Restart, write, frequency=0
+*Output, field, variable=PRESELECT
+*Output, history, variable=PRESELECT
+*End Step
+**
+*Step, name=Load-REF2-dof1, nlgeom=NO
+*Static
+1., 1., 1e-5, 1
+*Boundary, OP=NEW
+INST0-REF2, 1, 1, 0.5
+*Boundary, OP=NEW
+INST1-REF2, 1, 1, 0.5
+*Restart, write, frequency=0
+*Output, field, variable=PRESELECT
+*Output, history, variable=PRESELECT
+*End Step
+**
+*Step, name=Load-REF2-dof2, nlgeom=NO
+*Static
+1., 1., 1e-5, 1
+*Boundary, OP=NEW
+INST0-REF2, 2, 2, 0.5
+*Boundary, OP=NEW
+INST1-REF2, 2, 2, 0.5
+*Restart, write, frequency=0
+*Output, field, variable=PRESELECT
+*Output, history, variable=PRESELECT
+*End Step
+**
+*Step, name=Load-REF2-dof3, nlgeom=NO
+*Static
+1., 1., 1e-5, 1
+*Boundary, OP=NEW
+INST0-REF2, 3, 3, 0.5
+*Boundary, OP=NEW
+INST1-REF2, 3, 3, 0.5
+*Restart, write, frequency=0
+*Output, field, variable=PRESELECT
+*Output, history, variable=PRESELECT
+*End Step
+**

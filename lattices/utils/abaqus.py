@@ -6,6 +6,7 @@ from typing import Optional, List, Tuple, Dict, Union, Iterable
 import subprocess
 import json
 import datetime
+from pathlib import Path
 # %%
 def get_common_normal_guess(nodes : np.ndarray, edges : np.ndarray):
     assert nodes.shape[1]==3
@@ -262,6 +263,8 @@ def write_abaqus_inp(
     lines = [line + '\n' for line in lines]
     
     if isinstance(fname, str):
+        # make sure directory exists
+        Path(fname).parent.mkdir(parents=True, exist_ok=True)
         with open(fname, 'w') as fout:
             fout.writelines(lines)
     else: 
@@ -473,6 +476,8 @@ def write_abaqus_inp_normals(
     lines = [line + '\n' for line in lines]
     
     if isinstance(fname, str):
+        # make sure directory exists
+        Path(fname).parent.mkdir(parents=True, exist_ok=True)
         with open(fname, 'w') as fout:
             fout.writelines(lines)
     else: 
@@ -489,6 +494,16 @@ def write_abaqus_inp_nopbc(
     ):
     """Write abaqus input script for a specific lattice and loading 
     """
+    if 'Lattice name' not in metadata and hasattr(lat, 'name'):
+        metadata['Lattice name'] = lat.name
+    if 'Unit cell volume' not in metadata:
+        metadata['Unit cell volume'] = lat.UC_volume
+    if 'Date' not in metadata:
+        metadata['Date'] = datetime.datetime.now().strftime("%Y-%m-%d") 
+    if 'Job name' not in metadata:
+        assert fname is not None
+        metadata['Job name'] = os.path.splitext(os.path.basename(fname))[0]
+
     # enable variable edge radius
     assert strut_radii.ndim==2
     assert strut_radii.shape[0]==1 or strut_radii.shape[0]==lat.edge_adjacency.shape[0]
@@ -629,6 +644,8 @@ def write_abaqus_inp_nopbc(
     lines = [line + '\n' for line in lines]
     
     if isinstance(fname, str):
+        # make sure directory exists
+        Path(fname).parent.mkdir(parents=True, exist_ok=True)
         with open(fname, 'w') as fout:
             fout.writelines(lines)
     else: 

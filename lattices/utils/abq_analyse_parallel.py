@@ -73,7 +73,9 @@ def extract_one(jobname, wdir, log_file):
         print >> log_file, 'i = {} failed. Not enough steps'.format(str(jobname))
     else:
         for step_name in loading_steps:
-            
+            if step_name not in odb.steps.keys(): 
+                print >> log_file, 'Step {} not found in i = {}'.format(step_name, str(jobname))
+                continue
             if len(odb.steps['{}'.format(step_name)].frames)<2: continue
             frame = odb.steps['{}'.format(step_name)].frames[-1]
             allFields = frame.fieldOutputs
@@ -84,9 +86,14 @@ def extract_one(jobname, wdir, log_file):
                     refpt = assembly.nodeSets['INST{}-REF{}'.format(i_instance, ref_pt)]
                     ref_pt_u = displacement.getSubset(region=refpt)
                     ref_pt_rf = force.getSubset(region=refpt)
+                    print >> log_file, 'Length of ref_pt_rf.values = {}'.format(len(ref_pt_rf.values))
+                    if len(ref_pt_rf.values)>1:
+                        print >> log_file, 'More than one value for ref_pt_rf. Forces will be summed and displacements averaged'
                     for i_deg in [1,2,3]:
-                        instances_dict[i_instance][step_name]["REF{}, RF{}".format(ref_pt, i_deg)] = float(ref_pt_rf.values[0].data[i_deg-1])
-                        instances_dict[i_instance][step_name]["REF{}, U{}".format(ref_pt, i_deg)] = float(ref_pt_u.values[0].data[i_deg-1])
+                        forces = [float(x.data[i_deg-1]) for x in ref_pt_rf.values]
+                        displacements = [float(x.data[i_deg-1]) for x in ref_pt_u.values]
+                        instances_dict[i_instance][step_name]["REF{}, RF{}".format(ref_pt, i_deg)] = sum(forces)
+                        instances_dict[i_instance][step_name]["REF{}, U{}".format(ref_pt, i_deg)] = sum(displacements)/len(displacements)
 
     odict['Instances'] = instances_dict
 
@@ -96,33 +103,6 @@ def extract_one(jobname, wdir, log_file):
     count += 1
     print >> log_file, 'i = {}'.format(str(count))
     odb.close()
-
-def data_extractor(wdir):
-    with open('abq_extract_log.log', 'a') as log_file:
-        
-        to_process = os.listdir(wdir)
-        processed = []
-        
-        while len(to_process)>0:
-  
-            wdir_files = os.listdir(wdir)
-        
-            odb_names = [ (os.path.splitext(f)[0]) for f in wdir_files if f.endswith('.odb') ]
-            lck_names = [ (os.path.splitext(f)[0]) for f in wdir_files if f.endswith('.lck') ]
-            odb_ready = set(odb_names) - set(lck_names)
-            to_process = list( odb_ready - set(processed) )
-            
-            while len(to_process) > 0:
-                jobname = to_process.pop()
-                processed.append(jobname)
-                
-                extract_one(jobname, wdir, log_file)
-
-                # remove any files which have the job name but are not json
-                wdir_files = os.listdir(wdir)
-                for f in wdir_files:
-                    if jobname in f and not (f.endswith('.json') or f.endswith('.lat')):
-                        os.remove(os.path.join(wdir, f))
             
 def data_extractor(wdir, jobs, cleanup):
     with open('abq_extract_log.log', 'a') as log_file:
